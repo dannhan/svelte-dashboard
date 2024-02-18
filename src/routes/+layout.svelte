@@ -1,13 +1,15 @@
 <script>
-	import { ModeWatcher } from 'mode-watcher';
 	import '../app.pcss';
+	import { ModeWatcher } from 'mode-watcher';
 	import TailwindIndicator from './(components)/tailwind-indicator.svelte';
 </script>
 
+<!-- todo: change the title and description -->
 <svelte:head>
-	<title>Ria Busana</title>
-	<meta name="description" content="Ria Busana Login Page" />
+	<title>Dashboard</title>
+	<meta name="description" content="Dashboard" />
 </svelte:head>
+<!-- todo: change the title and description -->
 
 <slot />
 <ModeWatcher />

@@ -1,75 +1,29 @@
-<script>
+<script script lang="ts">
+	import { clickOutside } from 'svelte-use-click-outside';
+	import { page } from '$app/stores';
 	import { Button } from '$lib/components/ui/button';
+
+	export let data: any;
+	export let isMobileOpen: boolean;
 </script>
 
-<div class="h-full overflow-y-auto bg-background px-3 py-4">
-	<ul class="space-y-2 font-medium">
-		<li>
-			<Button variant="ghost" class="group group w-full justify-start rounded-lg p-2">
-				<svg
-					class="h-5 w-5 text-muted-foreground transition duration-75 hover:text-foreground group-hover:text-foreground"
-					xmlns="http://www.w3.org/2000/svg"
-					width="24"
-					height="24"
-					viewBox="0 0 24 24"
-					fill="none"
-					stroke="currentColor"
-					stroke-width="2"
-					stroke-linecap="round"
-					stroke-linejoin="round"
+<aside
+	use:clickOutside={() => (isMobileOpen = false)}
+	class="fixed left-0 top-0 z-40 h-screen w-64 max-w-[80%] -translate-x-full border-r bg-card shadow-md transition-transform duration-500 sm:w-52 sm:translate-x-0 md:w-56 lg:w-60 xl:w-64"
+	class:translate-x-0={isMobileOpen}
+>
+	<ul class="space-y-2 px-4 py-10 font-['Inter'] font-medium">
+		{#each data as { Icon, label, href } (label)}
+			<li>
+				<Button
+					{href}
+					variant={href === $page.url.pathname ? 'default' : 'ghost'}
+					class="w-full rounded-2xl focus-visible:ring-2"
 				>
-					<circle cx="12" cy="12" r="10" />
-					<path d="M12 16v-4" />
-					<path d="M12 8h.01" />
-				</svg>
-
-				<span class="ms-3 text-base">Identitas Proyek</span>
-			</Button>
-		</li>
-		<li>
-			<Button variant="ghost" class="group group w-full justify-start rounded-lg p-2">
-				<svg
-					class="h-5 w-5 text-muted-foreground transition duration-75 hover:text-foreground group-hover:text-foreground"
-					xmlns="http://www.w3.org/2000/svg"
-					width="24"
-					height="24"
-					viewBox="0 0 24 24"
-					fill="none"
-					stroke="currentColor"
-					stroke-width="2"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-				>
-					<path d="M3 3v18h18" />
-					<path d="M13 17V9" />
-					<path d="M18 17V5" />
-					<path d="M8 17v-3" />
-				</svg>
-
-				<span class="ms-3 text-base">Progress</span>
-			</Button>
-		</li>
-		<li>
-			<Button variant="ghost" class="group group w-full justify-start rounded-lg p-2">
-				<svg
-					class="h-5 w-5 text-muted-foreground transition duration-75 hover:text-foreground group-hover:text-foreground"
-					xmlns="http://www.w3.org/2000/svg"
-					width="24"
-					height="24"
-					viewBox="0 0 24 24"
-					fill="none"
-					stroke="currentColor"
-					stroke-width="2"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-				>
-					<path d="M22 12a10.06 10.06 1 0 0-20 0Z" />
-					<path d="M12 12v8a2 2 0 0 0 4 0" />
-					<path d="M12 2v1" />
-				</svg>
-
-				<span class="ms-3 text-base">Curah Hujan</span>
-			</Button>
-		</li>
+					<Icon class="h-5 w-5" />
+					<span class="ms-4 flex-1 truncate">{label}</span>
+				</Button>
+			</li>
+		{/each}
 	</ul>
-</div>
+</aside>
