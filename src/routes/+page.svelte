@@ -10,12 +10,18 @@
 	<Card class="w-[400px] max-w-full max-sm:border-none max-sm:bg-background max-sm:shadow-none">
 		<CardContent class="p-6">
 			<form class="grid gap-4">
-				<div>
-					<Label for="password">Password</Label>
-					<Input id="password" type="password" name="password" required />
-				</div>
+				<Label for="password" class="space-y-2">
+					<span>Password</span>
+					<Input
+						id="password"
+						type="password"
+						name="password"
+						class="focus-visible:ring-2 dark:bg-accent"
+						required
+					/>
+				</Label>
 
-				<Button href="/dashboard" class="w-full">Masuk</Button>
+				<Button href="/project" class="w-full focus-visible:ring-2">Masuk</Button>
 			</form>
 		</CardContent>
 	</Card>
