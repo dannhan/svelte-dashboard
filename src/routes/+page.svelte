@@ -7,6 +7,7 @@
 </script>
 
 <main class="flex min-h-screen items-center justify-center">
+	<!-- Login Card -->
 	<Card class="w-[400px] max-w-full max-sm:border-none max-sm:bg-background max-sm:shadow-none">
 		<CardContent class="p-6">
 			<form class="grid gap-4">

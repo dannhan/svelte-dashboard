@@ -1,5 +1,4 @@
 <script>
-	import '@fontsource-variable/roboto-flex';
 	import '@fontsource-variable/inter';
 	import '../app.pcss';
 	import { ModeWatcher } from 'mode-watcher';
@@ -9,7 +8,7 @@
 <!-- todo: change the title and description -->
 <svelte:head>
 	<title>Dashboard</title>
-	<meta name="description" content="Dashboard" />
+	<meta name="description" content="Dashboard Svelte" />
 </svelte:head>
 <!-- todo: change the title and description -->
 
@@ -19,7 +18,6 @@
 
 <style>
 	:global(body) {
-		/* font-family: 'Roboto Flex Variable'; */
 		font-family: 'Inter Variable';
 	}
 </style>
