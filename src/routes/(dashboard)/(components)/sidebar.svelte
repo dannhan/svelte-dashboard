@@ -15,7 +15,7 @@
 
 <aside
 	use:clickOutside={() => (isMobileOpen = false)}
-	class="fixed left-0 top-0 z-50 h-screen w-64 max-w-[80%] -translate-x-full border-r bg-card transition-transform duration-500 sm:w-52 sm:translate-x-0 md:w-56 lg:w-60 xl:w-64"
+	class="fixed left-0 top-0 z-50 h-screen w-64 max-w-[80%] -translate-x-full border-r bg-card transition-transform duration-300 sm:w-52 sm:translate-x-0 md:w-56 lg:w-60 xl:w-64"
 	class:translate-x-0={isMobileOpen}
 >
 	<nav class="space-y-2 py-10">

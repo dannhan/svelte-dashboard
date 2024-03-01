@@ -1,4 +1,33 @@
-<!-- Table Header -->
+<script lang="ts">
+	import type { Writable } from 'svelte/store';
+	import type { TableViewModel } from 'svelte-headless-table';
+	import { MagnifyingGlass, ChevronDown } from 'radix-icons-svelte';
+	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
+	import { Button } from '$lib/components/ui/button';
+	import { Input } from '$lib/components/ui/input';
+	import { Filter, Printer } from '$lib/icons';
+	import DataTablePrint from './data-table-print.svelte';
+
+	import type { Data } from '../data';
+	import { data } from '../data';
+
+	export let tableModel: TableViewModel<Data>;
+
+	const { pluginStates, flatColumns } = tableModel;
+	const { hiddenColumnIds } = pluginStates.hide;
+	const { filterValue }: { filterValue: Writable<string> } = pluginStates.filter;
+
+	const ids = flatColumns.map((col: { id: string }) => col.id);
+
+	const hidableCols = ['spk', 'pelaksana', 'status'];
+
+	let hideForId = Object.fromEntries(ids.map((id: string) => [id, true]));
+
+	$: $hiddenColumnIds = Object.entries(hideForId)
+		.filter(([, hide]) => !hide)
+		.map(([id]) => id);
+</script>
+
 <div
 	class="flex flex-col items-center justify-between space-y-3 p-4 md:flex-row md:space-x-4 md:space-y-0"
 >
@@ -7,26 +36,15 @@
 			<label for="simple-search" class="sr-only">Search</label>
 			<div class="relative w-full">
 				<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-					<svg
-						aria-hidden="true"
-						class="h-5 w-5 text-gray-500 dark:text-gray-400"
-						fill="currentColor"
-						viewBox="0 0 20 20"
-						xmlns="http://www.w3.org/2000/svg"
-					>
-						<path
-							fill-rule="evenodd"
-							d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-							clip-rule="evenodd"
-						/>
-					</svg>
+					<MagnifyingGlass class="h-5 w-5 text-muted-foreground" />
 				</div>
-				<input
+				<Input
 					type="text"
 					id="simple-search"
-					class="focus:ring-primary-500 focus:border-primary-500 dark:focus:ring-primary-500 dark:focus:border-primary-500 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 pl-10 text-sm text-gray-900 dark:border-border dark:bg-accent dark:text-white dark:placeholder-gray-400"
+					class="bg-muted pl-10 text-sm"
 					placeholder="Search"
 					required
+					bind:value={$filterValue}
 				/>
 			</div>
 		</form>
@@ -35,62 +53,63 @@
 		class="flex w-full flex-shrink-0 flex-col items-stretch justify-end space-y-2 md:w-auto md:flex-row md:items-center md:space-x-3 md:space-y-0"
 	>
 		<div class="flex w-full items-center space-x-3 md:w-auto">
-			<button
-				id="actionsDropdownButton"
-				data-dropdown-toggle="actionsDropdown"
-				class="hover:text-primary-700 flex w-full items-center justify-center rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-900 hover:bg-gray-100 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:border-border dark:bg-card dark:text-gray-400 dark:hover:bg-accent dark:hover:text-white dark:focus:ring-gray-700 md:w-auto"
+			<Button
+				size="lg"
+				class="w-full px-4 md:w-auto"
 				type="button"
+				on:click={() => {
+          console.log(data)
+					window.print();
+				}}
 			>
-				<svg
-					class="-ml-1 mr-1.5 h-5 w-5"
-					fill="currentColor"
-					viewBox="0 0 20 20"
-					xmlns="http://www.w3.org/2000/svg"
-					aria-hidden="true"
-				>
-					<path
-						clip-rule="evenodd"
-						fill-rule="evenodd"
-						d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-					/>
-				</svg>
-				Actions
-			</button>
-			<button
-				id="filterDropdownButton"
-				data-dropdown-toggle="filterDropdown"
-				class="hover:text-primary-700 flex w-full items-center justify-center rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-900 hover:bg-gray-100 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:border-border dark:bg-card dark:text-gray-400 dark:hover:bg-accent dark:hover:text-white dark:focus:ring-gray-700 md:w-auto"
-				type="button"
-			>
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					aria-hidden="true"
-					class="mr-2 h-4 w-4 text-gray-400"
-					viewBox="0 0 20 20"
-					fill="currentColor"
-				>
-					<path
-						fill-rule="evenodd"
-						d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z"
-						clip-rule="evenodd"
-					/>
-				</svg>
-				Filter
-				<svg
-					class="-mr-1 ml-1.5 h-5 w-5"
-					fill="currentColor"
-					viewBox="0 0 20 20"
-					xmlns="http://www.w3.org/2000/svg"
-					aria-hidden="true"
-				>
-					<path
-						clip-rule="evenodd"
-						fill-rule="evenodd"
-						d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-					/>
-				</svg>
-			</button>
+        <Printer class="-ml-0.5 mr-2 h-4 w-4" />
+        Print Data
+			</Button>
+
+			<DropdownMenu.Root>
+				<DropdownMenu.Trigger asChild let:builder>
+					<Button
+						size="lg"
+						variant="outline"
+						class="w-full bg-transparent px-4 text-muted-foreground md:w-auto"
+						type="button"
+						builders={[builder]}
+					>
+						<Filter class="mr-2 h-4 w-4 text-gray-400" />
+						Filter
+						<ChevronDown class="-mr-1 ml-1.5 h-5 w-5" />
+					</Button>
+				</DropdownMenu.Trigger>
+				<DropdownMenu.Content>
+					<DropdownMenu.Label>Toggle columns</DropdownMenu.Label>
+					<DropdownMenu.Separator />
+					{#each flatColumns as col}
+						{#if hidableCols.includes(col.id)}
+							<DropdownMenu.CheckboxItem bind:checked={hideForId[col.id]}>
+								{col.header}
+							</DropdownMenu.CheckboxItem>
+						{/if}
+					{/each}
+				</DropdownMenu.Content>
+			</DropdownMenu.Root>
 		</div>
 	</div>
 </div>
-<!-- End Table Header -->
+
+<div class="fixed left-0 top-0 invisible w-full p-6 print:visible" id="section-to-print">
+	<DataTablePrint {data} />
+</div>
+
+<style>
+	@page {
+		size: auto;
+		margin: 0mm;
+	}
+	@media print {
+		:global(body) {
+			visibility: hidden;
+			-webkit-print-color-adjust: exact;
+			print-color-adjust: exact;
+		}
+	}
+</style>
