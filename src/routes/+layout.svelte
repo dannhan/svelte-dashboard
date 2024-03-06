@@ -2,7 +2,6 @@
 	import '@fontsource-variable/inter';
 	import '../app.pcss';
 	import { ModeWatcher } from 'mode-watcher';
-  // todo
   import { ProgressBar } from "@prgm/sveltekit-progress-bar";
 	import TailwindIndicator from './(components)/tailwind-indicator.svelte';
 </script>
@@ -14,7 +13,7 @@
 	<meta name="description" content="Dashboard Svelte" />
 </svelte:head>
 
-<ProgressBar class="text-green-500" />
+<ProgressBar class="text-blue-500" zIndex={100} />
 
 <slot />
 
