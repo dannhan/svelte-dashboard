@@ -23,7 +23,7 @@
 			const apiUrl = `https://nominatim.openstreetmap.org/search?format=geojson&accept-language=id&countrycodes=id&limit=5&q=${val}`;
 			const data = await fetch(apiUrl)
 				.then((res) => res.json())
-				.catch(() => console.log('An exception occurred'));
+				.catch(() => console.error('An exception occurred'));
 			foundedCities = data?.features;
 
 			isFetching = false;

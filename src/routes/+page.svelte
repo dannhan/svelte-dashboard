@@ -1,9 +1,9 @@
 <!-- todo: implement login -->
 <script lang="ts">
 	import { Card, CardContent } from '$lib/components/ui/card';
-	import type { PageData } from './$types';
-	import LoginForm from './(components)/login-form.svelte';
-	export let data: PageData;
+	import LoginForm from './LoginForm.svelte';
+
+	export let data;
 </script>
 
 <main class="flex min-h-screen flex-col items-center justify-center">

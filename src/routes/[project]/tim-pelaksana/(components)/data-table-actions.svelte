@@ -1,13 +1,10 @@
 <!-- todo: implement edit data page -->
 <script lang="ts">
-	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
 	import * as Dialog from '$lib/components/ui/dialog';
 
 	import { Button, buttonVariants } from '$lib/components/ui/button';
 	import { Edit } from '$lib/icons';
 	import { cn } from '$lib/utils';
-
-	export let id: number;
 </script>
 
 <Dialog.Root>

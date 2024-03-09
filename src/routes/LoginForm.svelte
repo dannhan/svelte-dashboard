@@ -1,4 +1,6 @@
+<!-- todo: implement proper login -->
 <script lang="ts">
+	import { Spinner } from '$lib/icons';
 	import * as Form from '$lib/components/ui/form';
 	import { Input } from '$lib/components/ui/input';
 	import { loginSchema, type LoginSchema } from '$lib/schema';
@@ -7,15 +9,11 @@
 
 	export let data: SuperValidated<Infer<LoginSchema>>;
 
-	const form = superForm(data, {
-		validators: zodClient(loginSchema)
-	});
-
-	const { form: formData, enhance } = form;
+	const form = superForm(data, { validators: zodClient(loginSchema), delayMs: 250 });
+	const { form: formData, enhance, delayed } = form;
 </script>
 
-<!-- todo: throw error when password is incorrect, implement loading, read docs -->
-<form method="POST" use:enhance>
+<form method="POST" action="/?/login" use:enhance>
 	<Form.Field {form} name="password">
 		<Form.Control let:attrs>
 			<Form.Label>Password</Form.Label>
@@ -23,12 +21,16 @@
 				{...attrs}
 				bind:value={$formData.password}
 				type="password"
-				class="focus-visible:ring-2 bg-accent"
+				class="bg-accent focus-visible:ring-2"
 			/>
 		</Form.Control>
 		<Form.Description class="sr-only">Enter the password to login.</Form.Description>
-
 		<Form.FieldErrors />
 	</Form.Field>
-	<Form.Button class="mt-2 w-full focus-visible:ring-2">Masuk</Form.Button>
+	<Form.Button class="mt-2 w-full focus-visible:ring-2" disabled={$delayed}>
+		{#if $delayed}
+			<Spinner class="mr-2 h-4 w-4 animate-spin" />
+		{/if}
+		Masuk
+	</Form.Button>
 </form>

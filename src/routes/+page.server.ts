@@ -1,30 +1,31 @@
-import type { PageServerLoad, Actions } from './$types';
-import { fail, redirect } from '@sveltejs/kit';
-import { loginSchema } from '$lib/schema';
+import type { Actions, PageServerLoad } from './$types';
+import { fail, redirect, type RequestEvent } from '@sveltejs/kit';
 import { superValidate } from 'sveltekit-superforms';
 import { zod } from 'sveltekit-superforms/adapters';
-
-export const load: PageServerLoad = async () => {
-  return {
-    form: await superValidate(zod(loginSchema))
-  };
-};
+import { loginSchema } from '$lib/schema';
 
 export const actions: Actions = {
-  default: async (event) => {
-    const form = await superValidate(event, zod(loginSchema));
-    if (!form.valid) {
-      return fail(400, {
-        form
-      });
-    }
+	login: async (event: RequestEvent) => {
+		const form = await superValidate(event, zod(loginSchema));
 
-    // todo: implement proper login
-    const password = form.data.password;
-    if (password !== 'admin') {
-      return fail(400, { incorrect: true });
-    }
+		if (!form.valid) {
+			return fail(400, { form });
+		}
 
-    redirect(303, '/identitas-proyek');
-  }
+		if (form.data.password === 'admin') {
+			redirect(308, '/placeholder');
+		}
+
+		form.errors = { password: ['Password salah. Silakan coba lagi.'] };
+		return fail(400, { form });
+	},
+	logout: async () => {
+		redirect(303, '/');
+	}
+};
+
+export const load: PageServerLoad = async () => {
+	return {
+		form: await superValidate(zod(loginSchema))
+	};
 };

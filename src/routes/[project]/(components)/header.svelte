@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Button } from '$lib/components/ui/button';
 	import { Hamburger } from '$lib/icons';
-	import ModeToggle from '../../(components)/mode-toggle.svelte';
+	import { ModeToggle } from '$lib/components';
 
 	export let isMobileOpen: boolean;
 </script>
