@@ -19,17 +19,15 @@
 
 	export let data: LayoutData;
 	export let isMobileOpen: boolean;
+	const { projects, projectForm, logoutForm } = data;
 
 	let value = '';
 	let open = false;
 
-	const form = superForm(data.logoutForm, { validators: zodClient(logoutSchema), delayMs: 250 });
+	const form = superForm(logoutForm, { validators: zodClient(logoutSchema), delayMs: 250 });
 	const { delayed, enhance } = form;
 
-	// todo: what happened on edit page???
-	const getLastItem = (pathname: string) => pathname.substring(pathname.lastIndexOf('/') + 1);
-
-	$: formattedPathname = $page.url.pathname.split('/')[1].replace(/%20/g, ' ');
+	$: params = $page.params.project;
 </script>
 
 <aside class={$$restProps.class} class:translate-x-0={isMobileOpen}>
@@ -42,7 +40,7 @@
 						variant="outline"
 						class="w-full items-center justify-between rounded-sm border-none px-4 capitalize text-foreground focus-visible:ring-2"
 					>
-						{formattedPathname}
+						{params}
 						<ChevronDown />
 					</Button>
 				</Popover.Trigger>
@@ -54,17 +52,12 @@
 						<Command.Empty>No project found.</Command.Empty>
 
 						<Command.Group class="max-h-[70vh] overflow-y-auto">
-							<SidebarProjectList
-								bind:value
-								bind:open
-								bind:formattedPathname
-								projects={data.projects}
-							/>
+							<SidebarProjectList bind:value bind:open bind:params {projects} />
 							<Command.Separator class="my-1" />
 							{#if value === ''}
 								<Command.Item class="flex h-8 bg-accent p-0">
 									<SidebarProjectDialog
-										projectForm={data.projectForm}
+										{projectForm}
 										class="flex h-full flex-1 cursor-pointer items-center justify-center rounded-md p-0"
 									/>
 								</Command.Item>
@@ -81,7 +74,7 @@
 					<Button
 						on:click={() => (isMobileOpen = false)}
 						{href}
-						variant={href.startsWith(getLastItem($page.url.pathname)) ? 'default' : 'ghost'}
+						variant={$page.url.pathname.endsWith(href) ? 'default' : 'ghost'}
 						class="flex w-full rounded-full px-6 focus-visible:ring-2"
 					>
 						<Icon class="h-5 w-5" />

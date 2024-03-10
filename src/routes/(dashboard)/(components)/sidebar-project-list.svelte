@@ -10,8 +10,8 @@
 	import { Button } from '$lib/components/ui/button';
 
 	export let projects: string[];
-	export let formattedPathname: string;
 	export let open: boolean;
+	export let params: string;
 
 	export let value = '';
 	let isDeleting = true;
@@ -48,12 +48,7 @@
 				class="flex h-full flex-1 cursor-default items-center pl-2 text-left capitalize"
 				on:click={() => (isDeleting = false)}
 			>
-				<Check
-					class={cn(
-						'mr-2 h-4 w-4',
-						formattedPathname !== project.toLowerCase() && 'text-transparent'
-					)}
-				/>
+				<Check class={cn('mr-2 h-4 w-4', params !== project.toLowerCase() && 'text-transparent')} />
 				<span class="flex-1 truncate">{project}</span>
 			</button>
 
@@ -70,7 +65,7 @@
 					</Button>
 				</AlertDialog.Trigger>
 
-        <!-- todo: change this to indonesian -->
+				<!-- todo: change this to indonesian -->
 				<AlertDialog.Content class="bg-card">
 					<AlertDialog.Header>
 						<AlertDialog.Title>Are you absolutely sure?</AlertDialog.Title>

@@ -15,10 +15,10 @@
 />
 <Header
 	bind:isMobileOpen
-	class="sticky top-0 z-10 flex items-center px-4 py-1.5 shadow backdrop-blur md:hidden"
+	class="sticky top-0 z-10 flex items-center px-2 py-1.5 shadow backdrop-blur md:hidden md:px-4"
 />
 
-<main id="main-content" class="px-6 py-6 md:ml-64">
+<main id="main-content" class="p-4 sm:p-6 md:ml-64">
 	<button
 		class={cn(
 			'invisible fixed inset-0 z-30 block bg-background/80 opacity-0 backdrop-blur-sm transition-all duration-300',

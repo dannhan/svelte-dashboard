@@ -10,7 +10,7 @@
 	<Button
 		on:click={() => (isMobileOpen = true)}
 		variant="ghost"
-		class="inline-flex h-fit items-center rounded-lg py-2 text-sm"
+		class="inline-flex h-fit items-center rounded-lg p-2 text-sm"
 	>
 		<Hamburger class="h-5 w-5" />
 		<span class="ms-3">Menu</span>
