@@ -1,27 +1,32 @@
 import { json } from '@sveltejs/kit';
 import { getProjects, deleteProject, createProject } from '$lib/firebase';
+import { actionResult, superValidate } from 'sveltekit-superforms';
+import { zod } from 'sveltekit-superforms/adapters';
+import { projectSchema } from '$lib/schema';
 
 export async function GET() {
-  const projects = await getProjects("from api/projects/+server.ts");
+	const projects = await getProjects();
 
-  return json(projects);
+	return json(projects);
 }
 
 export async function DELETE({ request }: { request: Request }) {
-  const formData = await request.formData();
-  const project = formData.get('project') as string;
+	const formData = await request.formData();
+	const project = formData.get('project') as string;
 
-  await deleteProject(project);
+	if (!project) return json({ success: false, message: 'Payload incorrect' });
 
-  return json({ success: true });
+	await deleteProject(project);
+
+	return json({ success: true });
 }
 
 export async function POST({ request }: { request: Request }) {
-  const formData = await request.formData();
-  const name = (formData.get('name') as string)?.toLowerCase();
-  const type = formData.get('type');
+	const form = await superValidate(request, zod(projectSchema));
+	if (!form.valid) return actionResult('failure', { form });
 
-  await createProject(name);
+	const projectName = form.data.name.toLowerCase();
+	await createProject(projectName);
 
-  return json({ name, type });
+	return actionResult('success', { form }, 200);
 }

@@ -17,3 +17,9 @@ export const projectSchema = z.object({
   type: z.string({ required_error: 'Please select a construction type' })
 });
 export type ProjectSchema = typeof projectSchema;
+
+// delete project schema
+export const deleteProjectSchema = z.object({
+  name: z.string().min(1, { message: 'Project name is required' }),
+});
+export type DeleteProjectSchema = typeof deleteProjectSchema;

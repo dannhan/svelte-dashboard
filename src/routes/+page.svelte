@@ -1,4 +1,3 @@
-<!-- todo: implement login -->
 <script lang="ts">
 	import { Card, CardContent } from '$lib/components/ui/card';
 	import LoginForm from './LoginForm.svelte';

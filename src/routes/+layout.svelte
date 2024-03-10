@@ -6,14 +6,12 @@
 	import TailwindIndicator from './TailwindIndicator.svelte';
 </script>
 
-
-<!-- todo: change the title and description -->
 <svelte:head>
-	<title>Dashboard</title>
-	<meta name="description" content="Dashboard Svelte" />
+	<title>Ria Busana</title>
+	<meta name="description" content="Ria Busana Konstruksi" />
 </svelte:head>
 
-<ProgressBar class="text-blue-500" zIndex={100} />
+<ProgressBar class="text-blue-500" zIndex={99} />
 
 <slot />
 

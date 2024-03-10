@@ -9,7 +9,7 @@
 
 	export let data: SuperValidated<Infer<LoginSchema>>;
 
-	const form = superForm(data, { validators: zodClient(loginSchema), delayMs: 250 });
+	const form = superForm(data, { validators: zodClient(loginSchema), delayMs: 0 });
 	const { form: formData, enhance, delayed } = form;
 </script>
 
