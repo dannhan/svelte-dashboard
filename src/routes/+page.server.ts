@@ -1,5 +1,6 @@
 import type { Actions, PageServerLoad } from './$types';
 import { fail, redirect, type RequestEvent } from '@sveltejs/kit';
+import { getProjects } from '$lib/server/firebase';
 import { superValidate } from 'sveltekit-superforms';
 import { zod } from 'sveltekit-superforms/adapters';
 import { loginSchema } from '$lib/schema';
@@ -33,7 +34,10 @@ export const actions: Actions = {
       sameSite: 'strict',
       maxAge: 60 * 60 * 24 // 1 day
     });
-    redirect(303, '/placeholder/identitas-proyek');
+
+    //todo 
+    const firstProject = (await getProjects())[0];
+    redirect(303, `/${firstProject}/identitas-proyek`);
   },
   logout: async ({ cookies }) => {
     cookies.set('session', '', {

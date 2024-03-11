@@ -16,15 +16,15 @@
 
 	import SidebarProjectDialog from './sidebar-project-dialog.svelte';
 	import SidebarProjectList from './sidebar-project-list.svelte';
+	import { goto } from '$app/navigation';
 
 	export let data: LayoutData;
 	export let isMobileOpen: boolean;
-	const { projects, projectForm, logoutForm } = data;
 
 	let value = '';
 	let open = false;
 
-	const form = superForm(logoutForm, { validators: zodClient(logoutSchema), delayMs: 250 });
+	const form = superForm(data.logoutForm, { validators: zodClient(logoutSchema), delayMs: 250 });
 	const { delayed, enhance } = form;
 
 	$: params = $page.params.project;
@@ -52,12 +52,12 @@
 						<Command.Empty>No project found.</Command.Empty>
 
 						<Command.Group class="max-h-[70vh] overflow-y-auto">
-							<SidebarProjectList bind:value bind:open bind:params {projects} />
+							<SidebarProjectList bind:value bind:open bind:params projects={data.projects} />
 							<Command.Separator class="my-1" />
 							{#if value === ''}
 								<Command.Item class="flex h-8 bg-accent p-0">
 									<SidebarProjectDialog
-										{projectForm}
+										projectForm={data.projectForm}
 										class="flex h-full flex-1 cursor-pointer items-center justify-center rounded-md p-0"
 									/>
 								</Command.Item>
