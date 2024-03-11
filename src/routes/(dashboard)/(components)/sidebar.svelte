@@ -16,7 +16,6 @@
 
 	import SidebarProjectDialog from './sidebar-project-dialog.svelte';
 	import SidebarProjectList from './sidebar-project-list.svelte';
-	import { goto } from '$app/navigation';
 
 	export let data: LayoutData;
 	export let isMobileOpen: boolean;
@@ -45,18 +44,27 @@
 					</Button>
 				</Popover.Trigger>
 
+				<!-- Popover Content -->
 				<Popover.Content class="w-60 rounded-lg bg-card p-0">
 					<Command.Root shouldFilter={false} class="rounded-lg bg-card p-0 shadow-lg">
 						<Command.Input bind:value placeholder="Cari Proyek..." class="h-10" />
 						<Command.Separator alwaysRender={true} />
 						<Command.Empty>No project found.</Command.Empty>
-
 						<Command.Group class="max-h-[70vh] overflow-y-auto">
-							<SidebarProjectList bind:value bind:open bind:params projects={data.projects} />
+							<SidebarProjectList
+								bind:value
+								bind:open
+								{params}
+								projects={data.projects}
+								deleteProjectForm={data.deleteProjectForm}
+							/>
+
 							<Command.Separator class="my-1" />
+
 							{#if value === ''}
 								<Command.Item class="flex h-8 bg-accent p-0">
 									<SidebarProjectDialog
+										{params}
 										projectForm={data.projectForm}
 										class="flex h-full flex-1 cursor-pointer items-center justify-center rounded-md p-0"
 									/>

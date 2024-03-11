@@ -11,6 +11,7 @@
 	import { Button } from '$lib/components/ui/button';
 
 	export let projectForm: SuperValidated<Infer<ProjectSchema>>;
+  export let params: string;
 
 	let open = false;
 
@@ -41,7 +42,7 @@
 		<!------------------------------form content ---------------------------->
 		<form
 			method="POST"
-			action="/api/projects/"
+			action="/{params}?/create"
 			use:enhance
 			class="space-y-4"
 			on:submit={() => (open = false)}
@@ -49,7 +50,7 @@
 			<Form.Field {form} name="name">
 				<Form.Control let:attrs>
 					<Form.Label>Nama Proyek</Form.Label>
-					<Input {...attrs} bind:value={$formData.name} />
+					<Input {...attrs} bind:value={$formData.name} autocomplete="off" />
 				</Form.Control>
 			</Form.Field>
 
