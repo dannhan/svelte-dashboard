@@ -31,5 +31,12 @@ export const actions: Actions = {
     await deleteProject(projectName);
 
     return { form };
+  },
+  logout: async ({ cookies }) => {
+    cookies.set('session', '', {
+      path: '/',
+      expires: new Date(0)
+    });
+    redirect(303, '/');
   }
 };

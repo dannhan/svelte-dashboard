@@ -97,7 +97,7 @@
 		</div>
 
 		<div class="px-2">
-			<form method="POST" action="/?/logout" use:enhance>
+			<form method="POST" action="/{params}?/logout" use:enhance>
 				<Form.Button
 					variant="ghost"
 					class="flex w-full rounded-full px-6 focus-visible:ring-2"

@@ -3,7 +3,7 @@
 	import '../app.pcss';
 	import { ModeWatcher } from 'mode-watcher';
   import { ProgressBar } from "@prgm/sveltekit-progress-bar";
-	import TailwindIndicator from './TailwindIndicator.svelte';
+	import TailwindIndicator from './tailwind-indicator.svelte';
 </script>
 
 <svelte:head>

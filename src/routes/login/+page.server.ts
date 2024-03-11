@@ -12,7 +12,7 @@ export const load: PageServerLoad = async () => {
 };
 
 export const actions: Actions = {
-  login: async (event: RequestEvent) => {
+  default: async (event: RequestEvent) => {
     const form = await superValidate(event, zod(loginSchema));
     const password = form.data.password;
 
@@ -39,11 +39,4 @@ export const actions: Actions = {
     const firstProject = (await getProjects())[0];
     redirect(303, `/${firstProject}/identitas-proyek`);
   },
-  logout: async ({ cookies }) => {
-    cookies.set('session', '', {
-      path: '/',
-      expires: new Date(0)
-    });
-    redirect(303, '/');
-  }
 };

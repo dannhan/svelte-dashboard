@@ -14,7 +14,7 @@
 	const { form: formData, enhance, delayed } = form;
 </script>
 
-<form method="POST" action="/?/login" use:enhance>
+<form method="POST" use:enhance>
 	<Form.Field {form} name="password">
 		<Form.Control let:attrs>
 			<Form.Label>Password</Form.Label>
