@@ -1,6 +1,5 @@
 import type { Actions, PageServerLoad } from './$types';
-import { fail, redirect, type RequestEvent } from '@sveltejs/kit';
-import { getProjects } from '$lib/server/firebase';
+import { fail, type RequestEvent } from '@sveltejs/kit';
 import { superValidate } from 'sveltekit-superforms';
 import { zod } from 'sveltekit-superforms/adapters';
 import { loginSchema } from '$lib/schema';
@@ -35,8 +34,6 @@ export const actions: Actions = {
       maxAge: 60 * 60 * 24 // 1 day
     });
 
-    //todo 
-    const firstProject = (await getProjects())[0];
-    redirect(303, `/${firstProject}/identitas-proyek`);
+    return { form };
   },
 };

@@ -19,7 +19,7 @@ export const actions: Actions = {
     const projectName = form.data.name.toLowerCase();
     await createProject(projectName);
 
-    return { form };
+    redirect(303, `/${projectName}/identitas-proyek`);
   },
   delete: async (event: RequestEvent) => {
     const form = await superValidate(event, zod(deleteProjectSchema));
