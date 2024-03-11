@@ -1,5 +1,5 @@
 import { json } from '@sveltejs/kit';
-import { getProjects, deleteProject, createProject } from '$lib/firebase';
+import { getProjects, deleteProject, createProject } from '$lib/server/firebase';
 import { actionResult, superValidate } from 'sveltekit-superforms';
 import { zod } from 'sveltekit-superforms/adapters';
 import { projectSchema } from '$lib/schema';
