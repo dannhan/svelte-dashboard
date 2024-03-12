@@ -5,7 +5,7 @@
 	import { zodClient } from 'sveltekit-superforms/adapters';
 	import { logoutSchema } from '$lib/schema';
 
-	import { ChevronDown } from 'radix-icons-svelte';
+	import { ChevronDown } from 'svelte-radix';
 	import { sidebarItems } from '$lib';
 	import * as Popover from '$lib/components/ui/popover';
 	import * as Command from '$lib/components/ui/command';

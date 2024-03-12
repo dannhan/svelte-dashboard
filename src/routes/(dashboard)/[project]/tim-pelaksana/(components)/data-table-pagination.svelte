@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { TableViewModel } from 'svelte-headless-table';
-	import { ChevronRight, ChevronLeft } from 'radix-icons-svelte';
+	import { ChevronRight, ChevronLeft } from 'svelte-radix';
 	import { cn } from '$lib/utils';
 	import * as Select from '$lib/components/ui/select';
 	import { Button } from '$lib/components/ui/button';

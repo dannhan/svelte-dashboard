@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Writable } from 'svelte/store';
 	import type { TableViewModel } from 'svelte-headless-table';
-	import { MagnifyingGlass } from 'radix-icons-svelte';
+	import { MagnifyingGlass } from 'svelte-radix';
 	import { Plus } from '$lib/icons';
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
 	import { Button } from '$lib/components/ui/button';

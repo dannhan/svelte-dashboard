@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { ArrowDown, ArrowUp, CaretSort } from 'radix-icons-svelte';
+	import { ArrowDown, ArrowUp, CaretSort } from 'svelte-radix';
 	import { Button } from '$lib/components/ui/button';
 
 	export let props: {

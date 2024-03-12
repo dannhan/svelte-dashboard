@@ -3,7 +3,7 @@
 	import * as Command from '$lib/components/ui/command';
 	import { cn } from '$lib/utils';
 	import LoadingSpinner from './loadingSpinner.svelte';
-	import { MagnifyingGlass } from 'radix-icons-svelte';
+	import { MagnifyingGlass } from 'svelte-radix';
 
 	export let lngLat: LngLatLike;
 

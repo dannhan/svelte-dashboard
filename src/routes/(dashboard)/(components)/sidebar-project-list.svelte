@@ -2,7 +2,7 @@
 	import { goto } from '$app/navigation';
 
 	import { cn } from '$lib/utils';
-	import { Check } from 'radix-icons-svelte';
+	import { Check } from 'svelte-radix';
 	import { Trash } from '$lib/icons';
 
 	import * as AlertDialog from '$lib/components/ui/alert-dialog/index.js';
