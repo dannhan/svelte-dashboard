@@ -25,9 +25,9 @@ export const handle: Handle = async ({ event, resolve }) => {
   }
 
   // todo: throw proper error
-  if (event.locals.projects?.findIndex((project) => project === projectPage) === -1) {
-    throw error(404, 'not found');
-  }
+  // if (event.locals.projects?.findIndex((project) => project === projectPage) === -1) {
+  //   throw error(404, 'not found');
+  // }
 
   return resolve(event);
 };
