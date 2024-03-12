@@ -31,17 +31,17 @@ export const createProject = async (name: string) => {
 };
 
 export const getProjects = async () => {
-  const docs = await getDocs(collection(db, 'projects'));
-  const data: string[] = [];
-
-  // todo: if you want to get the data then use doc.data()
-  docs.forEach((doc) => {
-    data.push(doc.id);
-    // console.log(doc.data());
-  });
-  console.log('FETCHING PROJECTS...', data);
-
-  return data;
+  // const docs = await getDocs(collection(db, 'projects'));
+  // const data: string[] = [];
+  //
+  // // todo: if you want to get the data then use doc.data()
+  // docs.forEach((doc) => {
+  //   data.push(doc.id);
+  //   // console.log(doc.data());
+  // });
+  //
+  // return data;
+  return ["yomand"];
 };
 
 export const deleteProject = async (project: string) => {

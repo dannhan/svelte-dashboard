@@ -1,4 +1,4 @@
-// import { getProjects } from '$lib/server/firebase';
+import { getProjects } from '$lib/server/firebase';
 import { redirect, type Handle, error } from '@sveltejs/kit';
 
 export const handle: Handle = async ({ event, resolve }) => {
@@ -16,7 +16,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 
   if (isMethodGET) {
     if (projectPage || isSessionPresent) {
-      // event.locals.projects = await getProjects();
+      event.locals.projects = await getProjects();
     }
 
     if (isLoginPage && isSessionPresent) {
@@ -26,9 +26,9 @@ export const handle: Handle = async ({ event, resolve }) => {
   }
 
   // todo: throw proper error
-  // if (event.locals.projects?.findIndex((project) => project === projectPage) === -1) {
-  //   throw error(404, 'not found');
-  // }
+  if (event.locals.projects?.findIndex((project) => project === projectPage) === -1) {
+    throw error(404, 'not found');
+  }
 
   return resolve(event);
 };
