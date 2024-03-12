@@ -3,6 +3,7 @@ import { redirect, type Handle, error } from '@sveltejs/kit';
 
 export const handle: Handle = async ({ event, resolve }) => {
   /* redirect user to login page if not authenticated */
+
   const isSessionPresent = event.cookies.get('session'); // todo: check if authenticated here
   const isLoginPage = event.url.pathname === '/';
 
