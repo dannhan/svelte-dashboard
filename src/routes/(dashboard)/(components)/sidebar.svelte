@@ -1,5 +1,5 @@
 <script script lang="ts">
-	import { page } from '$app/stores';
+	import { navigating, page } from '$app/stores';
 	import type { LayoutData } from '../$types';
 	import { superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
@@ -103,7 +103,7 @@
 					class="flex w-full rounded-full px-6 focus-visible:ring-2"
 					disabled={$delayed}
 				>
-					{#if $delayed}
+					{#if $delayed || $navigating}
 						<Spinner class="h-5 w-5 animate-spin" />
 					{:else}
 						<LogOut class="h-5 w-5" />
