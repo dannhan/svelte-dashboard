@@ -8,7 +8,7 @@ import {
   getDocs,
   deleteDoc,
   getFirestore,
-  Firestore
+  type Firestore
 } from 'firebase/firestore';
 import { firebaseConfig } from './settings';
 
