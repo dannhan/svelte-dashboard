@@ -1,13 +1,9 @@
-import type { Actions, PageServerLoad } from './$types';
+import type { Actions } from './$types';
 import { fail, redirect, type RequestEvent } from '@sveltejs/kit';
 import { createProject, deleteProject } from '$lib/server/firebase';
 import { superValidate } from 'sveltekit-superforms';
 import { zod } from 'sveltekit-superforms/adapters';
 import { deleteProjectSchema, projectSchema } from '$lib/schema';
-
-export const load: PageServerLoad = async ({ params }) => {
-  redirect(303, `${params.project}/identitas-proyek`);
-}
 
 export const actions: Actions = {
   create: async (event: RequestEvent) => {

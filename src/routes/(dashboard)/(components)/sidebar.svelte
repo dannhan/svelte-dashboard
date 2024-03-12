@@ -55,7 +55,7 @@
 								bind:value
 								bind:open
 								{params}
-								projects={data.projects}
+								projects={data.projects || []}
 								deleteProjectForm={data.deleteProjectForm}
 							/>
 

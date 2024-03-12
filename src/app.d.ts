@@ -4,8 +4,8 @@ declare global {
 	namespace App {
 		// interface Error {}
 		interface Locals {
-      isLogin: boolean | null;
-      projects: string[] | null;
+      isLogin: boolean | undefined;
+      projects: string[] | undefined;
     }
 		// interface PageData {}
 		// interface PageState {}
