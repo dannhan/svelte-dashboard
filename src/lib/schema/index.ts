@@ -20,6 +20,6 @@ export type ProjectSchema = typeof projectSchema;
 
 // delete project schema
 export const deleteProjectSchema = z.object({
-  name: z.string().min(1, { message: 'Project name is required' }),
+  name: z.string().min(1, { message: 'Project name is required' })
 });
 export type DeleteProjectSchema = typeof deleteProjectSchema;

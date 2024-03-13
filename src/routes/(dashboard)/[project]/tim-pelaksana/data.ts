@@ -5,7 +5,7 @@ export type Data = {
   pelaksana: string;
   gambar: string;
   status: string;
-}
+};
 
 // todo uppercase or lowercase
 // export const data: Data[] = [

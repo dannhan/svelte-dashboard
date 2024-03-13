@@ -1,14 +1,14 @@
 <script lang="ts">
-	import { Card, CardContent } from '$lib/components/ui/card';
-	import LoginForm from './LoginForm.svelte';
+  import { Card, CardContent } from '$lib/components/ui/card';
+  import LoginForm from './LoginForm.svelte';
 
-	export let data;
+  export let data;
 </script>
 
 <main class="flex min-h-[100dvh] flex-col items-center justify-center">
-	<Card class="w-[400px] max-w-full max-sm:border-none max-sm:bg-background max-sm:shadow-none">
-		<CardContent class="p-6">
-			<LoginForm data={data.form} />
-		</CardContent>
-	</Card>
+  <Card class="w-[400px] max-w-full max-sm:border-none max-sm:bg-background max-sm:shadow-none">
+    <CardContent class="p-6">
+      <LoginForm data={data.form} />
+    </CardContent>
+  </Card>
 </main>

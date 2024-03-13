@@ -14,7 +14,7 @@ import Images from './images.svelte';
 import CalendarCheck from './calendar-check.svelte';
 import Wallet from './wallet.svelte';
 import Trash from './trash.svelte';
-import Spinner from './spinners.svelte'
+import Spinner from './spinners.svelte';
 
 export {
   Info,

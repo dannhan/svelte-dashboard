@@ -12,7 +12,7 @@ export type {
   Offset,
   PointLike,
   PositionAnchor,
-  StyleSpecification,
+  StyleSpecification
 } from 'maplibre-gl';
 
 export interface ClusterOptions {

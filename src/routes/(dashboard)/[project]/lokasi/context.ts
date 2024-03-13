@@ -74,7 +74,7 @@ function eventTopMost(layerInfo: Map<string, LayerInfo>): (event: MapMouseEvent)
 
     tracker.set(event.originalEvent, topId);
 
-    return topId || "Error Occurred From Context.ts";
+    return topId || 'Error Occurred From Context.ts';
   };
 }
 
@@ -91,14 +91,14 @@ export function createMapContext(): MapContext {
     maxzoom: writable(24),
     layerEvent: writable(null),
     layerInfo,
-    eventTopMost: eventTopMost(layerInfo),
+    eventTopMost: eventTopMost(layerInfo)
   });
 }
 
 /** Make sure inner components can't accidentally change their parent stores. */
 function readableFromWritable<T>(writable: Readable<T>): Readable<T> {
   return {
-    subscribe: writable.subscribe,
+    subscribe: writable.subscribe
   };
 }
 
@@ -118,7 +118,7 @@ function updatedContext<T extends string | Marker>({
   key,
   setPopupTarget = false,
   setCluster = false,
-  setMouseEvent = false,
+  setMouseEvent = false
 }: UpdatedContextOptions): UpdatedContext<T> {
   const currentContext = mapContext();
 
@@ -126,7 +126,7 @@ function updatedContext<T extends string | Marker>({
   const ctxValue = readableFromWritable(newValue);
   const newCtx = {
     ...currentContext,
-    [key]: readableFromWritable(newValue),
+    [key]: readableFromWritable(newValue)
   };
 
   if (setPopupTarget) {
@@ -148,7 +148,7 @@ function updatedContext<T extends string | Marker>({
 
   return {
     ...currentContext,
-    self: newValue,
+    self: newValue
   };
 }
 
@@ -160,7 +160,7 @@ export function updatedLayerContext(interactive = true): UpdatedContext<string> 
   return updatedContext<string>({
     key: 'layer',
     setPopupTarget: interactive,
-    setMouseEvent: interactive,
+    setMouseEvent: interactive
   });
 }
 
@@ -182,13 +182,13 @@ export function updatedZoomRangeContext(
   setContext(MAP_CONTEXT_KEY, {
     ...currentContext,
     minzoom: readableFromWritable(minzoom),
-    maxzoom: readableFromWritable(maxzoom),
+    maxzoom: readableFromWritable(maxzoom)
   });
   return {
     originalMinZoom: currentContext.minzoom,
     originalMaxZoom: currentContext.maxzoom,
     minzoom,
-    maxzoom,
+    maxzoom
   };
 }
 
