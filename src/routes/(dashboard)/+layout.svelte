@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { cn } from '$lib/utils';
-	import Sidebar from './(components)/sidebar.svelte';
-	import Header from './(components)/header.svelte';
+	import Sidebar from './sidebar.svelte';
+	import Header from './header.svelte';
 
 	export let data;
 

@@ -2,6 +2,7 @@
 	import { ModeToggle } from '$lib/components';
 
 	export let data;
+  const projects = data.projects || [];
 </script>
 
 <div class="mb-4 flex items-center">
@@ -10,7 +11,7 @@
 </div>
 
 <ul>
-	{#each data.projects as project}
-		<li>{project}</li>
+	{#each projects as project}
+		<li>{project.name}</li>
 	{/each}
 </ul>

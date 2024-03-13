@@ -1,6 +1,7 @@
 <script script lang="ts">
 	import { navigating, page } from '$app/stores';
-	import type { LayoutData } from '../$types';
+	import type { LayoutData } from './$types';
+
 	import { superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
 	import { logoutSchema } from '$lib/schema';
@@ -31,15 +32,22 @@
 
 <aside class={$$restProps.class} class:translate-x-0={isMobileOpen}>
 	<nav class="space-y-2 py-6">
+		<!-- dropdown start -->
 		<div class="relative mb-4 w-full px-2">
 			<Popover.Root bind:open>
 				<Popover.Trigger asChild let:builder>
 					<Button
 						builders={[builder]}
 						variant="outline"
-						class="w-full items-center justify-between rounded-sm border-none px-4 capitalize text-foreground focus-visible:ring-2"
+						class="h-auto w-full items-center justify-between rounded-sm border-none px-4 py-2 capitalize text-foreground focus-visible:ring-2"
 					>
-						{params}
+						<div class="flex flex-col justify-start text-left leading-none">
+							{params}
+
+							<span class="text-[0.7rem] font-normal leading-4 text-muted-foreground">
+								{data.projects?.find(({ name }) => name === params)?.type}
+							</span>
+						</div>
 						<ChevronDown />
 					</Button>
 				</Popover.Trigger>
@@ -75,14 +83,15 @@
 				</Popover.Content>
 			</Popover.Root>
 		</div>
+		<!-- dropdown end -->
 
 		<ul class="space-y-1 px-2 font-medium">
 			{#each sidebarItems as { Icon, label, href } (label)}
 				<li>
 					<Button
-						on:click={() => (isMobileOpen = false)}
 						{href}
 						variant={$page.url.pathname.endsWith(href) ? 'default' : 'ghost'}
+						on:click={() => (isMobileOpen = false)}
 						class="flex w-full rounded-full px-6 focus-visible:ring-2"
 					>
 						<Icon class="h-5 w-5" />

@@ -13,7 +13,8 @@ export const actions: Actions = {
     }
 
     const projectName = form.data.name.toLowerCase();
-    await createProject(projectName);
+    const projectType = form.data.type.toLowerCase();
+    await createProject(projectName, projectType);
 
     redirect(303, `/${projectName}/identitas-proyek`);
   },
@@ -24,6 +25,9 @@ export const actions: Actions = {
     }
 
     const projectName = form.data.name;
+    // todo
+    if (projectName === event.params.project) return { form };
+
     await deleteProject(projectName);
 
     return { form };

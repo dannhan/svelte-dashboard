@@ -10,7 +10,7 @@
 	import DataTablePrint from './data-table-print.svelte';
 
 	import type { Data } from '../data';
-	import { data } from '../data';
+	// import { data } from '../data';
 
 	export let tableModel: TableViewModel<Data>;
 
@@ -94,7 +94,7 @@
 </div>
 
 <div class="invisible fixed left-0 top-0 w-full p-6 print:visible" id="section-to-print">
-	<DataTablePrint {data} />
+	<!-- <DataTablePrint {data} /> -->
 </div>
 
 <style>

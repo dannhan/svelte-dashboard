@@ -1,6 +1,7 @@
 <script script lang="ts">
 	import { goto } from '$app/navigation';
 
+	import type { Project } from '$lib/types';
 	import { cn } from '$lib/utils';
 	import { Check } from 'svelte-radix';
 	import { Trash } from '$lib/icons';
@@ -15,7 +16,7 @@
 	import { zodClient } from 'sveltekit-superforms/adapters';
 
 	export let deleteProjectForm: SuperValidated<Infer<DeleteProjectSchema>>;
-	export let projects: string[];
+	export let projects: Project[];
 	export let open: boolean;
 	export let params: string;
 	export let value: string;
@@ -28,10 +29,10 @@
 
 {#each projects as project}
 	<!-- search -->
-	{#if project.startsWith(value.toLowerCase())}
+	{#if project.name.startsWith(value.toLowerCase())}
 		<CommandItem
 			class="flex h-10 p-0 capitalize"
-			value={project}
+			value={project.name}
 			onSelect={(value) => {
 				if (isDeleting) {
 					return;
@@ -46,8 +47,8 @@
 				class="flex h-full flex-1 cursor-default items-center pl-2 text-left capitalize"
 				on:click={() => (isDeleting = false)}
 			>
-				<Check class={cn('mr-2 h-4 w-4', params !== project && 'text-transparent')} />
-				<span class="flex-1 truncate">{project}</span>
+				<Check class={cn('mr-2 h-4 w-4', params !== project.name && 'text-transparent')} />
+				<span class="flex-1 truncate">{project.name}</span>
 			</button>
 
 			<AlertDialog.Root>
@@ -58,6 +59,7 @@
 						type="submit"
 						class="hover:bg-transparent hover:text-destructive"
 						builders={[builder]}
+            disabled={project.name === params}
 					>
 						<Trash class="h-3.5 w-3.5" />
 					</Button>
@@ -73,16 +75,16 @@
 					</AlertDialog.Header>
 					<AlertDialog.Footer>
 						<AlertDialog.Cancel class="bg-transparent">Cancel</AlertDialog.Cancel>
-						<form method="POST" action="/banjar?/delete" use:enhance>
+						<form method="POST" action="/{params}?/delete" use:enhance>
 							<Form.Field {form} name="name" class="hidden">
 								<Form.Control let:attrs>
-									<input {...attrs} bind:value={project} autocomplete="off" />
+									<input {...attrs} bind:value={project.name} autocomplete="off" />
 								</Form.Control>
 							</Form.Field>
 
 							<AlertDialog.Action
 								type="submit"
-								on:click={() => ($formData.name = project)}
+								on:click={() => ($formData.name = project.name)}
 								class="w-full bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90"
 							>
 								Continue
