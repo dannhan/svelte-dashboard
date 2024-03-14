@@ -11,6 +11,7 @@ type Project = {
   name: string;
   type: string;
   team: Assignment[];
+  designImages: string[];
 };
 
 export type { Project, Assignment };
