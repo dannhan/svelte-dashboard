@@ -20,28 +20,33 @@
   <ModeToggle />
 </div>
 
-<div class="mx-auto grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-1 md:gap-6 lg:grid-cols-2 max-w-[840px]" >
+<div
+  class="mx-auto grid max-w-[840px] grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-1 md:gap-6 lg:grid-cols-2"
+>
   {#each project.designImages as designImage}
     <AspectRatio
       ratio={9 / 14}
-      class="absolute cursor-pointer rounded-lg transition-all hover:z-10 hover:scale-105 overflow-hidden bg-muted"
+      class="absolute cursor-pointer rounded-lg bg-muted transition-all hover:z-10 hover:scale-105"
     >
-      <img src={designImage} alt="design" class="object-fit rounded-lg h-full" />
-    </AspectRatio>
+      <img id={designImage} src={designImage} alt="design" class="object-fit h-full rounded-lg" />
+
+      <button
+        class="absolute left-0 top-0 z-50 h-full w-full bg-transparent text-black opacity-0"
+        on:click={() => document.getElementById(designImage)?.requestFullscreen()}
+      >
+      </button></AspectRatio
+    >
   {/each}
 
   {#each imageURLs as src}
     <AspectRatio
       ratio={9 / 14}
-      class="absolute cursor-pointer rounded-lg transition-all hover:z-10 hover:scale-105 overflow-hidden bg-muted"
+      class="absolute cursor-pointer overflow-hidden rounded-lg bg-muted transition-all hover:z-10 hover:scale-105"
     >
-      <img {src} alt="design" class="object-fit rounded-lg h-full"/>
+      <img {src} alt="design" class="object-fit h-full rounded-lg" />
     </AspectRatio>
   {/each}
 
   <!-- {params} -->
-  <ImageCard
-    bind:imageURLs
-    class="bg-muted transition-all hover:z-10 hover:scale-105"
-  />
+  <ImageCard bind:imageURLs class="bg-muted transition-all hover:z-10 hover:scale-105" />
 </div>

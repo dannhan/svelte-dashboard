@@ -89,7 +89,7 @@
       {#each sidebarItems as { Icon, label, href } (label)}
         <li>
           <Button
-            {href}
+            href="/{params}/{href}"
             variant={$page.url.pathname.endsWith(href) ? 'default' : 'ghost'}
             on:click={() => (isMobileOpen = false)}
             class="flex w-full rounded-full px-6 focus-visible:ring-2"

@@ -17,10 +17,10 @@ export const actions = {
 
     const { fileToUpload } = formData as { params: string; fileToUpload: File };
 
-    const params = event.url.pathname.split("/")[1];
+    const params = event.url.pathname.split('/')[1];
 
     await uploadDesignImage(params, fileToUpload);
 
     return { success: true };
-  },
+  }
 };

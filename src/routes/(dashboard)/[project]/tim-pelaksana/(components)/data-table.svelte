@@ -43,7 +43,7 @@
     table.column({
       accessor: ({ id }) => id,
       header: '',
-      cell: ({ value }) => createRender(DataTableActions, { id: value }),
+      cell: () => createRender(DataTableActions),
       plugins: {
         sort: {
           disable: true

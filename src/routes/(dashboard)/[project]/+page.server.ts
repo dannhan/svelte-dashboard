@@ -1,6 +1,6 @@
 import type { Actions } from './$types';
 import { fail, redirect, type RequestEvent } from '@sveltejs/kit';
-import { createProject, deleteProject } from '$lib/server/firebase';
+import { addProject, deleteProject } from '$lib/server/firebase';
 import { superValidate } from 'sveltekit-superforms';
 import { zod } from 'sveltekit-superforms/adapters';
 import { deleteProjectSchema, projectSchema } from '$lib/schema';
@@ -14,7 +14,7 @@ export const actions: Actions = {
 
     const projectName = form.data.name.toLowerCase();
     const projectType = form.data.type.toLowerCase();
-    await createProject(projectName, projectType);
+    await addProject(projectName, projectType);
 
     redirect(303, `/${projectName}/identitas-proyek`);
   },

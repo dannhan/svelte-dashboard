@@ -35,5 +35,5 @@ export {
   Wallet,
   Trash,
   Spinner,
-  ImagePlus,
+  ImagePlus
 };

@@ -14,4 +14,4 @@ type Project = {
   designImages: string[];
 };
 
-export type { Project, Assignment };
+export type { Assignment, Project };

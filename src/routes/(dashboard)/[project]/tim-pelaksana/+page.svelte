@@ -6,7 +6,7 @@
 
   export let data;
   const params = $page.params.project;
-  const project = data.projects!.find((project) => (project.name === params));
+  const project = data.projects!.find((project) => project.name === params);
 
   if (!project) throw error(404);
 </script>
