@@ -15,6 +15,19 @@ export const deleteProjectSchema = z.object({
   name: z.string().min(1, { message: 'Project name is required' })
 });
 
+export const projectIdentitySchema = z.object({
+  originalItem: z.object({
+    id: z.string(),
+    key: z.string(),
+    value: z.string()
+  }),
+  newItem: z.object({
+    id: z.string(),
+    key: z.string(),
+    value: z.string()
+  })
+});
+
 const MAX_FILE_SIZE = 1000000; // 10MB;
 const ACCEPTED_IMAGE_TYPES = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'image/svg'];
 export const imageSchema = z.object({
@@ -31,3 +44,4 @@ export type LoginSchema = typeof loginSchema;
 export type LogoutSchema = typeof logoutSchema;
 export type ProjectSchema = typeof projectSchema;
 export type DeleteProjectSchema = typeof deleteProjectSchema;
+export type ProjectIdentiySchema = typeof projectIdentitySchema;

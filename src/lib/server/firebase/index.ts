@@ -18,6 +18,8 @@ if (!app) {
 
 import { ProjectsService } from './services/projects';
 import { DesignImagesService } from './services/design-images';
+import { ProjectIdentityService } from './services/project-identity';
 
 export const { addProject, getProjects, getFirstProject, deleteProject } = new ProjectsService(app);
 export const { uploadDesignImage } = new DesignImagesService(app);
+export const { addProjectIdentity, deleteProjectIdentity } = new ProjectIdentityService(app);

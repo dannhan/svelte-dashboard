@@ -47,6 +47,5 @@
     </AspectRatio>
   {/each}
 
-  <!-- {params} -->
-  <ImageCard bind:imageURLs class="bg-muted transition-all hover:z-10 hover:scale-105" />
+  <ImageCard bind:imageURLs class="transition-all hover:z-10 hover:scale-105" />
 </div>

@@ -6,7 +6,7 @@
   import { Button } from '$lib/components/ui/button';
   import type { Data } from '../data';
 
-  export let tableModel: TableViewModel<Data>;
+  export let tableModel: TableViewModel<Data, any>;
 
   const { pluginStates } = tableModel;
 

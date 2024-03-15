@@ -3,13 +3,15 @@
   import type { Data } from '../data';
 
   export let data: Data[];
+
+  const sortedData = data.sort((a, b) => a.id - b.id);
 </script>
 
 <Table class="border-collapse border border-black">
   <TableBody class="font-semibold text-black">
-    {#each data as { id, key, value } (id)}
+    {#each sortedData as { id, key, value } (id)}
       <TableRow class="border-none">
-        <TableCell class="border-t border-black text-center">{id}.</TableCell>
+        <TableCell class="w-10 border-t border-black text-center">{id}.</TableCell>
         <TableCell class="border border-black">{key}</TableCell>
         <TableCell class="border border-black">{value}</TableCell>
       </TableRow>

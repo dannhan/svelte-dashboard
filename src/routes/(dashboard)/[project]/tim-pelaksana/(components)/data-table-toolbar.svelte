@@ -3,24 +3,19 @@
   import type { TableViewModel } from 'svelte-headless-table';
   import { MagnifyingGlass } from 'svelte-radix';
   import { Plus } from '$lib/icons';
-  import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
   import { Button } from '$lib/components/ui/button';
   import { Input } from '$lib/components/ui/input';
   import { Printer } from '$lib/icons';
-  import DataTablePrint from './data-table-print.svelte';
 
   import type { Data } from '../data';
-  // import { data } from '../data';
 
-  export let tableModel: TableViewModel<Data>;
+  export let tableModel: TableViewModel<Data, any>;
 
   const { pluginStates, flatColumns } = tableModel;
   const { hiddenColumnIds } = pluginStates.hide;
   const { filterValue }: { filterValue: Writable<string> } = pluginStates.filter;
 
   const ids = flatColumns.map((col: { id: string }) => col.id);
-
-  const hidableCols = ['spk', 'pelaksana', 'status'];
 
   let hideForId = Object.fromEntries(ids.map((id: string) => [id, true]));
 
@@ -65,30 +60,15 @@
       </Button>
 
       <!-- todo: implement add data page -->
-      <DropdownMenu.Root>
-        <DropdownMenu.Trigger asChild let:builder>
-          <Button
-            variant="secondary"
-            class="w-full items-center focus-visible:ring-2 md:w-auto"
-            type="button"
-            builders={[builder]}
-          >
-            <Plus class="-ml-1 mr-1.5 h-4 w-4" />
-            Add Data
-          </Button>
-        </DropdownMenu.Trigger>
-        <DropdownMenu.Content>
-          <DropdownMenu.Label>Toggle columns</DropdownMenu.Label>
-          <DropdownMenu.Separator />
-          {#each flatColumns as col}
-            {#if hidableCols.includes(col.id)}
-              <DropdownMenu.CheckboxItem bind:checked={hideForId[col.id]}>
-                {col.header}
-              </DropdownMenu.CheckboxItem>
-            {/if}
-          {/each}
-        </DropdownMenu.Content>
-      </DropdownMenu.Root>
+      <Button
+        variant="secondary"
+        class="w-full items-center focus-visible:ring-2 md:w-auto"
+        type="button"
+        on:click={() => alert()}
+      >
+        <Plus class="-ml-1 mr-1.5 h-4 w-4" />
+        Add Data
+      </Button>
     </div>
   </div>
 </div>

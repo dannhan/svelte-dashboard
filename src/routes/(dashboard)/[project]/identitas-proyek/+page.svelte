@@ -1,7 +1,13 @@
 <script lang="ts">
+  import { page } from '$app/stores';
+
   import { ModeToggle } from '$lib/components';
   import DataTable from './(components)/data-table.svelte';
-  import { data, type Data } from './data';
+
+  export let data;
+
+  $: project = data.projects?.find((project) => project.name === $page.params.project);
+  $: identity = project?.identity;
 </script>
 
 <div class="mb-4 flex items-center">
@@ -9,5 +15,4 @@
   <ModeToggle />
 </div>
 
-<!-- todo: change the variable name -->
-<DataTable {data} />
+<DataTable data={identity || []} />
