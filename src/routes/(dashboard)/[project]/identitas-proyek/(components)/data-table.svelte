@@ -8,9 +8,8 @@
     createRender,
     type DataLabel
   } from 'svelte-headless-table';
-  import { addPagination, addSortBy } from 'svelte-headless-table/plugins';
+  import { addSortBy } from 'svelte-headless-table/plugins';
   import * as Table from '$lib/components/ui/table';
-  import DataTablePagination from './data-table-pagination.svelte';
   import DataTableToolbar from './data-table-toolbar.svelte';
   import DataTableEditableCell from './data-table-editable-cell.svelte';
   import type { Data } from '../data';
@@ -71,7 +70,7 @@
   const { pageRows, tableAttrs, tableBodyAttrs } = tableModel;
 </script>
 
-<div class="relative mx-auto max-w-4xl overflow-hidden rounded-lg bg-card shadow-md">
+<div class="relative mx-auto overflow-hidden rounded-lg bg-card shadow-md">
   <DataTableToolbar
     {tableModel}
     data={$tableData}
@@ -122,9 +121,4 @@
   </Table.Root>
 
   <div class="p-3"></div>
-
-  <!-- <DataTablePagination -->
-  <!--   {tableModel} -->
-  <!--   class="flex flex-col items-center justify-between gap-4 rounded-b-lg p-4 min-[420px]:flex-row" -->
-  <!-- /> -->
 </div>

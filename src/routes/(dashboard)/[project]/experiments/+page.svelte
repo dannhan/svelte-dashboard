@@ -5,7 +5,7 @@
   const projects = data.projects || [];
 </script>
 
-<div class="mb-4 flex items-center">
+<div class="mb-4 flex items-end">
   <h1 class="text-3xl font-semibold">Expremients</h1>
   <ModeToggle />
 </div>

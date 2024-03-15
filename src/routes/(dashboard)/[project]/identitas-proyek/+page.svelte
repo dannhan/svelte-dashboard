@@ -10,7 +10,7 @@
   $: identity = project?.identity;
 </script>
 
-<div class="mb-4 flex items-end border-b-2 pb-2">
+<div class="mb-4 flex items-end">
   <h1 class="text-xl font-semibold">Identitas Proyek</h1>
   <ModeToggle />
 </div>

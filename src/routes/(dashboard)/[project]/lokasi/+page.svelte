@@ -8,7 +8,7 @@
   let lngLat: LngLatLike = [110.44302165, -7.0597536];
 </script>
 
-<div class="mb-4 flex items-center">
+<div class="mb-4 flex items-end">
   <h1 class="text-xl font-semibold">Lokasi</h1>
   <ModeToggle />
 </div>
