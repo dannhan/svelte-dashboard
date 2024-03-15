@@ -15,7 +15,7 @@
   let imageURLs: string[] = [];
 </script>
 
-<div class="mb-4 flex items-center border-b pb-2">
+<div class="mb-4 flex items-end border-b-2 pb-2">
   <h1 class="text-xl font-semibold">Gambar Desain</h1>
   <ModeToggle />
 </div>
