@@ -38,7 +38,6 @@ export class ProjectIdentityService {
   public async deleteProjectIdentity(project: string, identity: Identity) {
     const projectRef = doc(this.db, 'projects', project);
 
-    console.log({ project });
     await updateDoc(projectRef, {
       identity: arrayRemove({ ...identity })
     });

@@ -18,8 +18,6 @@
 
   export let data: Data[];
 
-  const params = $page.params.project;
-
   const tableData = writable(data);
   $: $tableData = data;
 
@@ -44,7 +42,7 @@
         method: 'POST',
         credentials: 'same-origin', // include, *same-origin, omit
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ params, originalItem, newItem })
+        body: JSON.stringify({ params: $page.params.project, originalItem, newItem })
       });
     }
   };
