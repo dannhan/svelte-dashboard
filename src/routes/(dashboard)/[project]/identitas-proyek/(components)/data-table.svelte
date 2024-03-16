@@ -95,7 +95,11 @@
             {#each row.cells as cell (cell.id)}
               <Subscribe attrs={cell.attrs()} let:attrs>
                 {#if cell.id === 'id'}
-                  <Table.Cell {...attrs} class="w-10 whitespace-nowrap border border-l-0 px-0 py-0">
+                  <Table.Cell {...attrs} class="w-10 whitespace-nowrap border border-l-0 px-0 py-0 font-semibold">
+                    <Render of={cell.render()} />
+                  </Table.Cell>
+                {:else if cell.id === 'key'}
+                  <Table.Cell {...attrs} class="whitespace-nowrap border border-r-0 px-2 py-0 font-semibold">
                     <Render of={cell.render()} />
                   </Table.Cell>
                 {:else}
