@@ -1,4 +1,6 @@
 <script lang="ts">
+    import type { Writable } from 'svelte/store';
+    import type { TableViewModel } from 'svelte-headless-table';
   import { MagnifyingGlass } from 'svelte-radix';
   import { Button } from '$lib/components/ui/button';
   import { Input } from '$lib/components/ui/input';
@@ -6,7 +8,11 @@
   import DataTablePrint from './data-table-print.svelte';
   import type { Data } from '../data';
 
+  export let tableModel: TableViewModel<Data, any>;
   export let data: Data[];
+
+  const { pluginStates } = tableModel;
+  const { filterValue }: { filterValue: Writable<string> } = pluginStates.filter;
 </script>
 
 <div class={$$restProps.class}>
@@ -23,6 +29,7 @@
           class="bg-tertiary pl-10 text-sm transition-none focus-visible:ring-2"
           placeholder="Search"
           required
+          bind:value={$filterValue}
         />
       </div>
     </form>

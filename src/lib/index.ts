@@ -24,7 +24,7 @@ export const sidebarItems = [
   },
   {
     Icon: Progress,
-    label: 'Progress',
+    label: 'Progress Proyek',
     href: 'progress'
   },
   {

@@ -8,7 +8,7 @@
     createRender,
     type DataLabel
   } from 'svelte-headless-table';
-  import { addSortBy } from 'svelte-headless-table/plugins';
+  import { addSortBy, addTableFilter } from 'svelte-headless-table/plugins';
   import * as Table from '$lib/components/ui/table';
   import DataTableToolbar from './data-table-toolbar.svelte';
   import DataTableEditableCell from './data-table-editable-cell.svelte';
@@ -30,6 +30,15 @@
     const key = columnId;
     const originalItem = $tableData[index];
     const newItem = { ...originalItem, [key]: newValue };
+
+    if (newItem?.new && newItem.key === '' && newItem.value === '') {
+      $tableData.pop();
+      $tableData = $tableData;
+
+      return;
+    }
+
+    delete newItem?.new;
     $tableData[index] = newItem;
     $tableData = $tableData;
 
@@ -55,9 +64,10 @@
     });
 
   const table = createTable(tableData, {
+    filter: addTableFilter({
+      fn: ({ filterValue, value }) => value.toLowerCase().includes(filterValue.toLowerCase())
+    }),
     sort: addSortBy({ initialSortKeys: [{ id: 'id', order: 'asc' }] })
-    // todo: set this to localStorage
-    // page: addPagination({ initialPageSize: 25 })
   });
 
   const columns = table.createColumns([
@@ -105,7 +115,7 @@
             class="flex w-full cursor-pointer gap-2 px-4 py-3"
             on:click={async () => {
               const id = $tableData.length;
-              $tableData.push({ id: id + 1, key: '', value: '' });
+              $tableData.push({ id: id + 1, key: '', value: '', new: true });
               $tableData = $tableData;
 
               await new Promise((resolve) => setTimeout(resolve, 100));

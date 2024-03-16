@@ -2,6 +2,7 @@ export type Data = {
   id: number;
   key: string;
   value: string;
+  new?: boolean;
 };
 
 // export const data: Data[] = [

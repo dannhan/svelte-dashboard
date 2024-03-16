@@ -33,6 +33,7 @@
       bind:value
       on:blur={() => form.requestSubmit()}
       class="auto h-full w-12 cursor-default truncate border-transparent bg-transparent px-2 py-3 text-center focus:outline-none"
+      autocomplete="off"
     />
   </form>
 {:else}
@@ -47,6 +48,7 @@
       bind:value
       on:blur={() => form.requestSubmit()}
       class="h-full w-fit min-w-full cursor-default truncate border-transparent bg-transparent px-4 py-3 focus:outline-none"
+      autocomplete="off"
     />
   </form>
 {/if}

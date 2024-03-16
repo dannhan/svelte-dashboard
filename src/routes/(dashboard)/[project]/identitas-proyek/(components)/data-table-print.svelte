@@ -9,7 +9,7 @@
 
 <Table class="border-collapse border border-black">
   <TableBody class="font-semibold text-black">
-    {#each sortedData as { id, key, value } (id)}
+    {#each sortedData as { id, key, value }}
       <TableRow class="border-none">
         <TableCell class="w-10 border-t border-black text-center">{id}.</TableCell>
         <TableCell class="border border-black">{key}</TableCell>
