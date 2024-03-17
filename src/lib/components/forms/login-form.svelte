@@ -1,16 +1,20 @@
-<!-- todo: implement proper login -->
 <script lang="ts">
   import { navigating } from '$app/stores';
-  import { Spinner } from '$lib/icons';
+
+  import { superForm, type Infer, type SuperValidated } from 'sveltekit-superforms';
+  import { zodClient } from 'sveltekit-superforms/adapters';
+  import { postAuthenticationSchema } from '$lib/schema';
+
   import * as Form from '$lib/components/ui/form';
   import { Input } from '$lib/components/ui/input';
-  import { loginSchema, type LoginSchema } from '$lib/schema';
-  import { type SuperValidated, type Infer, superForm } from 'sveltekit-superforms';
-  import { zodClient } from 'sveltekit-superforms/adapters';
+  import { Spinner } from '$lib/components/icons';
 
-  export let data: SuperValidated<Infer<LoginSchema>>;
+  export let data: SuperValidated<Infer<typeof postAuthenticationSchema>>;
 
-  const form = superForm(data, { validators: zodClient(loginSchema), delayMs: 150 });
+  const form = superForm(data, {
+    validators: zodClient(postAuthenticationSchema),
+    delayMs: 150
+  });
   const { form: formData, enhance, delayed } = form;
 </script>
 

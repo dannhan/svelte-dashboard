@@ -1,5 +1,5 @@
 // place files you want to import through the `$lib` alias in this folder.
-import { Info, Progress, MapPin, Users, Images, CalendarCheck, Wallet } from '$lib/icons';
+import { Info, Progress, MapPin, Users, Images, CalendarCheck, Wallet } from '$lib/components/icons';
 
 export const sidebarItems = [
   {

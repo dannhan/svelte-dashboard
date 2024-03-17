@@ -13,7 +13,7 @@
   import DataTableToolbar from './data-table-toolbar.svelte';
   import DataTableEditableCell from './data-table-editable-cell.svelte';
   import type { Data } from '../data';
-  import Plus from '$lib/icons/plus.svelte';
+  import { Plus } from '$lib/components/icons';
 
   export let data: Data[];
 
@@ -71,7 +71,8 @@
   });
 
   const columns = table.createColumns([
-    table.column({ accessor: 'id', header: '', cell: EditableCellLabel, id: 'id' }),
+    // table.column({ accessor: 'id', header: '', cell: EditableCellLabel, id: 'id' }),
+    table.column({ accessor: 'id', header: '', id: 'id' }),
     table.column({ accessor: 'key', header: '', cell: EditableCellLabel, id: 'key' }),
     table.column({ accessor: 'value', header: '', cell: EditableCellLabel, id: 'value' })
   ]);
@@ -83,7 +84,7 @@
 <div class="relative mx-auto overflow-hidden rounded-lg bg-card shadow-md">
   <DataTableToolbar
     {tableModel}
-    data={$tableData}
+    bind:data={$tableData}
     class="flex flex-col items-center justify-between space-y-3 rounded-t-lg p-4 md:flex-row md:space-x-4 md:space-y-0"
   />
 
@@ -95,7 +96,7 @@
             {#each row.cells as cell (cell.id)}
               <Subscribe attrs={cell.attrs()} let:attrs>
                 {#if cell.id === 'id'}
-                  <Table.Cell {...attrs} class="w-10 whitespace-nowrap border border-l-0 px-0 py-0 font-semibold">
+                  <Table.Cell {...attrs} class="w-10 whitespace-nowrap border border-l-0 px-4 font-semibold text-center">
                     <Render of={cell.render()} />
                   </Table.Cell>
                 {:else if cell.id === 'key'}

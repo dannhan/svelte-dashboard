@@ -1,10 +1,14 @@
 import type { LayoutServerLoad } from './$types';
-import { addProjectForm, deleteProjectForm, logoutForm } from '$lib/forms/validator';
+import {
+  initializePostProjectForm,
+  initializeDeleteProjectForm,
+  initializeLogoutForm
+} from '$lib/forms/initiator';
 
 export const load: LayoutServerLoad = async () => {
   return {
-    projectForm: await addProjectForm(),
-    deleteProjectForm: await deleteProjectForm(),
-    logoutForm: await logoutForm()
+    projectForm: await initializePostProjectForm(),
+    deleteProjectForm: await initializeDeleteProjectForm(),
+    logoutForm: await initializeLogoutForm()
   };
 };

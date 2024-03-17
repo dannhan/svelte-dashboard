@@ -4,7 +4,7 @@
 
   export let data: Data[];
 
-  const sortedData = data.sort((a, b) => a.id - b.id);
+  $: sortedData = data.sort((a, b) => a.id - b.id);
 </script>
 
 <Table class="border-collapse border border-black">

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { enhance } from '$app/forms';
   import { cn } from '$lib/utils';
-  import ImagePlus from '$lib/icons/image-plus.svelte';
+  import { ImagePlus } from '$lib/components/icons';
 
   export let imageURLs: string[];
 

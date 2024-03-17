@@ -36,7 +36,7 @@
     type="text"
     bind:value
     on:blur={() => form.requestSubmit()}
-    class="h-full w-full min-w-20 max-w-full cursor-default truncate border-transparent bg-transparent px-4 py-3 text-center focus:outline-none"
+    class="h-full w-full min-w-20 max-w-full cursor-pointer truncate border-transparent bg-transparent px-4 py-3 text-center focus:outline-none"
     autocomplete="off"
   />
 </form>

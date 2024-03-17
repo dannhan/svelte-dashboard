@@ -1,15 +1,20 @@
 <script lang="ts">
+  import { setContext } from 'svelte';
   import { cn } from '$lib/utils';
-  import Sidebar from './sidebar.svelte';
-  import Header from './header.svelte';
+  import Sidebar from '$lib/components/sidebar/sidebar.svelte';
+  import Header from '$lib/components/header/header.svelte';
 
   export let data;
+
+  setContext("projectForm", data.projectForm);
+  setContext("deleteProjectForm", data.deleteProjectForm);
+  setContext("logoutForm", data.logoutForm);
 
   let isMobileOpen = false;
 </script>
 
 <Sidebar
-  {data}
+  projects={data.projects || []}
   bind:isMobileOpen
   class="fixed left-0 top-0 z-40 h-screen w-64 max-w-[80%] -translate-x-full border-r bg-navbar shadow-md transition-transform duration-300 dark:border-none md:translate-x-0"
 />

@@ -1,6 +1,6 @@
 import { type Actions } from '@sveltejs/kit';
-import { uploadDesignImageFormHandler } from '$lib/forms/handler';
+import { postDesignImageFormHandler } from '$lib/forms/handler/images';
 
 export const actions: Actions = {
-  default: async (event) => await uploadDesignImageFormHandler(event)
+  default: async (event) => await postDesignImageFormHandler(event)
 };

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Card, CardContent } from '$lib/components/ui/card';
-  import LoginForm from './LoginForm.svelte';
+  import LoginForm from '$lib/components/forms/login-form.svelte';
 
   export let data;
 </script>

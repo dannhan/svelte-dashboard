@@ -2,10 +2,9 @@
   import type { Writable } from 'svelte/store';
   import type { TableViewModel } from 'svelte-headless-table';
   import { MagnifyingGlass } from 'svelte-radix';
-  import { Plus } from '$lib/icons';
   import { Button } from '$lib/components/ui/button';
   import { Input } from '$lib/components/ui/input';
-  import { Printer } from '$lib/icons';
+  import { Plus, Printer } from '$lib/components/icons';
 
   import type { Data } from '../data';
 

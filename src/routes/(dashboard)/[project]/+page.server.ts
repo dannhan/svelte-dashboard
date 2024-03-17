@@ -1,12 +1,9 @@
 import type { Actions } from './$types';
-import {
-  addProjectFormHandler,
-  deleteProjectFormHandler,
-  logoutFormHandler
-} from '$lib/forms/handler';
+import { postProjectFormHandler, deleteProjectFormHandler } from '$lib/forms/handler/projects';
+import { deleteAuthenticationHandler } from '$lib/forms/handler/authentications';
 
 export const actions: Actions = {
-  create: async (event) => addProjectFormHandler(event),
+  create: async (event) => postProjectFormHandler(event),
   delete: async (event) => deleteProjectFormHandler(event),
-  logout: async (event) => logoutFormHandler(event)
+  logout: async (event) => deleteAuthenticationHandler(event)
 };

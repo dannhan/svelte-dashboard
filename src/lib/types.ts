@@ -13,12 +13,19 @@ type Identity = {
   value: string;
 };
 
+type Progress = {
+  id: number; 
+  fisik: string;
+  biaya: string;
+};
+
 type Project = {
   name: string;
   type: string;
-  team: Assignment[];
   identity: Identity[];
+  team: Assignment[];
   designImages: string[];
+  progress: Progress[];
 };
 
-export type { Assignment, Project, Identity };
+export type { Assignment, Project, Identity, Progress };

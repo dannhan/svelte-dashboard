@@ -1,20 +1,21 @@
 <script lang="ts">
+  import { page } from '$app/stores';
+
   import * as Popover from '$lib/components/ui/popover';
   import * as Command from '$lib/components/ui/command';
   import { Button } from '$lib/components/ui/button';
-  import { CaretSort, ChevronDown } from 'svelte-radix';
-  import type { LayoutData } from './$types';
+  import { CaretSort } from 'svelte-radix';
 
-  import SidebarProjectDialog from './sidebar-project-dialog.svelte';
-  import SidebarProjectList from './sidebar-project-list.svelte';
+  import type { Project } from '$lib/types';
+  import SidebarProjectDialog from './sidebar-combobox-dialog.svelte';
+  import SidebarProjectList from './sidebar-combobox-item-list.svelte';
 
-  export let value = '';
-  export let data: LayoutData;
-  export let params: string;
   export let type: 'konstruksi' | 'renovasi';
+  export let projects: Project[];
 
-  let open: boolean = false;
-  $: filteredData = data.projects?.filter((v) => v.type === type) || [];
+  let open = false;
+  let value = '';
+  $: filteredData = projects?.filter((v) => v.type === type) || [];
 </script>
 
 <Popover.Root bind:open>
@@ -41,9 +42,8 @@
         <SidebarProjectList
           bind:value
           bind:open
-          {params}
+          params={$page.params.project}
           projects={filteredData}
-          deleteProjectForm={data.deleteProjectForm}
         />
 
         <Command.Separator class="my-1" />
@@ -51,9 +51,8 @@
         {#if value === ''}
           <Command.Item class="flex h-8 bg-accent p-0">
             <SidebarProjectDialog
-              {params}
+              params={$page.params.project}
               bind:type
-              projectForm={data.projectForm}
               class="flex h-full flex-1 cursor-pointer items-center justify-center rounded-md p-0"
             />
           </Command.Item>

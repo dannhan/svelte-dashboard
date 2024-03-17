@@ -1,12 +1,12 @@
 import { z } from 'zod';
 
-export const loginSchema = z.object({
+export const postAuthenticationSchema = z.object({
   password: z.string().min(1, { message: 'Password is required' })
 });
 
-export const logoutSchema = z.object({});
+export const deleteAuthenticationSchema = z.object({});
 
-export const projectSchema = z.object({
+export const postProjectSchema = z.object({
   name: z.string().min(1, { message: 'Project name is required' }),
   type: z.string({ required_error: 'Please select a construction type' })
 });
@@ -14,7 +14,6 @@ export const projectSchema = z.object({
 export const deleteProjectSchema = z.object({
   name: z.string().min(1, { message: 'Project name is required' })
 });
-
 export const projectIdentitySchema = z.object({
   originalItem: z.object({
     id: z.string(),
@@ -40,8 +39,6 @@ export const imageSchema = z.object({
     )
 });
 
-export type LoginSchema = typeof loginSchema;
-export type LogoutSchema = typeof logoutSchema;
-export type ProjectSchema = typeof projectSchema;
+// todo
+export type PostProjectSchema = typeof postProjectSchema;
 export type DeleteProjectSchema = typeof deleteProjectSchema;
-export type ProjectIdentiySchema = typeof projectIdentitySchema;

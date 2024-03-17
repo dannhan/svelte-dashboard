@@ -3,7 +3,7 @@
   import * as Dialog from '$lib/components/ui/dialog';
 
   import { Button, buttonVariants } from '$lib/components/ui/button';
-  import { Edit } from '$lib/icons';
+  import { Edit } from '$lib/components/icons';
   import { cn } from '$lib/utils';
 </script>
 

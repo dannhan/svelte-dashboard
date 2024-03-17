@@ -1,10 +1,10 @@
 <script lang="ts">
-    import type { Writable } from 'svelte/store';
-    import type { TableViewModel } from 'svelte-headless-table';
+  import type { Writable } from 'svelte/store';
+  import type { TableViewModel } from 'svelte-headless-table';
   import { MagnifyingGlass } from 'svelte-radix';
   import { Button } from '$lib/components/ui/button';
   import { Input } from '$lib/components/ui/input';
-  import { Printer } from '$lib/icons';
+  import { Printer } from '$lib/components/icons';
   import DataTablePrint from './data-table-print.svelte';
   import type { Data } from '../data';
 
@@ -51,7 +51,7 @@
   </div>
 </div>
 
-<div class="invisible fixed left-0 top-0 w-full p-6 print:visible" id="section-to-print">
+<div class="invisible fixed left-0 top-0 w-full p-6 print:visible">
   <DataTablePrint {data} />
 </div>
 

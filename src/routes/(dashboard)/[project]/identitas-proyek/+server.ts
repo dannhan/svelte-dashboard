@@ -12,8 +12,8 @@ export async function POST({ request }: { request: Request }) {
     return json(data, { status: 400 });
   }
 
-  // todo promise all
-  await deleteProjectIdentity(params, originalItem);
+  // todo: bug when creating item?
+  if (!originalItem.new) await deleteProjectIdentity(params, originalItem);
   await addProjectIdentity(params, newItem);
 
   return json({ status: 'success' });

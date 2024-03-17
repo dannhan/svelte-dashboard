@@ -1,16 +1,15 @@
-import type { Actions, PageServerLoad } from './$types';
 import { type RequestEvent } from '@sveltejs/kit';
-import { superValidate } from 'sveltekit-superforms';
-import { zod } from 'sveltekit-superforms/adapters';
-import { loginSchema } from '$lib/schema';
-import { loginFormHandler } from '$lib/forms/handler';
+import type { Actions, PageServerLoad } from './$types';
+
+import { initializeLoginForm } from '$lib/forms/initiator';
+import { postAuthenticationHandler } from '$lib/forms/handler/authentications';
 
 export const load: PageServerLoad = async () => {
   return {
-    form: await superValidate(zod(loginSchema))
+    form: await initializeLoginForm()
   };
 };
 
 export const actions: Actions = {
-  default: async (event: RequestEvent) => await loginFormHandler(event)
+  default: async (event: RequestEvent) => await postAuthenticationHandler(event)
 };
