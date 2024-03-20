@@ -26,7 +26,7 @@
         <Input
           type="text"
           id="simple-search"
-          class="bg-tertiary pl-10 text-sm transition-none focus-visible:ring-2"
+          class="bg-tertiary pl-10 text-sm transition-none"
           placeholder="Search"
           required
           bind:value={$filterValue}

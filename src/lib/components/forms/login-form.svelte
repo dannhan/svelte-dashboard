@@ -26,7 +26,7 @@
         {...attrs}
         bind:value={$formData.password}
         type="password"
-        class="focus-visible:ring-2 dark:bg-accent"
+        class="dark:bg-accent"
       />
     </Form.Control>
     <Form.Description class="sr-only">Enter the password to login.</Form.Description>

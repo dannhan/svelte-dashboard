@@ -5,7 +5,7 @@
   import Map from './(components)/map.svelte';
   // import Weather from './(components)/weather.svelte';
 
-  let lngLat: LngLatLike = [110.44302165, -7.0597536];
+  let lngLat: LngLatLike = [109.44302165, -7.0597536];
 </script>
 
 <div class="mb-4 flex items-end">
