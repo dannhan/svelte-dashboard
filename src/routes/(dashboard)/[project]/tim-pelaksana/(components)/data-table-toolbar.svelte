@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { goto } from '$app/navigation';
+
   import type { Writable } from 'svelte/store';
   import type { TableViewModel } from 'svelte-headless-table';
   import { MagnifyingGlass } from 'svelte-radix';
@@ -36,7 +38,7 @@
         <Input
           type="text"
           id="simple-search"
-          class="bg-tertiary pl-10 text-sm transition-none focus-visible:ring-2"
+          class="bg-tertiary pl-10 text-sm transition-none"
           placeholder="Search"
           required
           bind:value={$filterValue}
@@ -63,7 +65,7 @@
         variant="secondary"
         class="w-full items-center focus-visible:ring-2 md:w-auto"
         type="button"
-        on:click={() => alert()}
+        on:click={() => goto('tim-pelaksana/data')}
       >
         <Plus class="-ml-1 mr-1.5 h-4 w-4" />
         Add Data
