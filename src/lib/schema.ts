@@ -14,6 +14,7 @@ export const postProjectSchema = z.object({
 export const deleteProjectSchema = z.object({
   name: z.string().min(1, { message: 'Project name is required' })
 });
+
 export const projectIdentitySchema = z.object({
   originalItem: z.object({
     id: z.string(),
@@ -39,6 +40,11 @@ export const imageSchema = z.object({
     )
 });
 
-// todo
-export type PostProjectSchema = typeof postProjectSchema;
-export type DeleteProjectSchema = typeof deleteProjectSchema;
+export const postAssignmentSchema = z.object({
+  id: z.number(),
+  pekerjaan: z.string(),
+  spk: z.string(),
+  pelaksana: z.string(),
+  gambar: z.string(),
+  status: z.string(),
+})

@@ -1,7 +1,8 @@
 <script lang="ts">
+  import { setContext } from 'svelte';
+  import { error } from '@sveltejs/kit';
   import { page } from '$app/stores';
   import { ModeToggle } from '$lib/components';
-  import { error } from '@sveltejs/kit';
   import DataTable from './(components)/data-table.svelte';
 
   export let data;
@@ -9,6 +10,8 @@
   const project = data.projects?.find((project) => project.name === params);
 
   if (!project) throw error(404);
+
+  setContext('postAssignmentForm', data.postAssignmentForm);
 </script>
 
 <div class="mb-4 flex items-end">

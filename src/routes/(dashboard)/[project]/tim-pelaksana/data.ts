@@ -1,5 +1,5 @@
 export type Data = {
-  id: string;
+  id: number;
   pekerjaan: string;
   spk: string;
   pelaksana: string;
