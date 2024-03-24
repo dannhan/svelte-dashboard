@@ -1,7 +1,7 @@
 <script lang="ts">
-    import { page } from '$app/stores';
+  import { page } from '$app/stores';
   import { ModeToggle } from '$lib/components';
-    import { error } from '@sveltejs/kit';
+  import { error } from '@sveltejs/kit';
   import DataTable from './(components)/data-table.svelte';
   // import { data } from './data';
 

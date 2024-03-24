@@ -1,6 +1,6 @@
-import type { Assignment } from "$lib/types";
-import type { FirebaseApp } from "firebase/app";
-import { Firestore, arrayUnion, doc, getFirestore, updateDoc } from "firebase/firestore";
+import type { Assignment } from '$lib/types';
+import type { FirebaseApp } from 'firebase/app';
+import { Firestore, arrayUnion, doc, getFirestore, updateDoc } from 'firebase/firestore';
 
 export class ProjectAssignmentService {
   private db: Firestore;
@@ -24,6 +24,6 @@ export class ProjectAssignmentService {
 
   // todo
   public async addProjectAssignmentImage() {
-    return "terserah";
+    return 'terserah';
   }
 }

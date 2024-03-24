@@ -19,4 +19,7 @@
   <ModeToggle />
 </div>
 
-<AssignmentForm id={(project.assignment?.length || 0) + 1} data={project.assignment[data.updateDataId - 1]} />
+<AssignmentForm
+  id={(project.assignment?.length || 0) + 1}
+  data={project.assignment[data.updateDataId - 1]}
+/>

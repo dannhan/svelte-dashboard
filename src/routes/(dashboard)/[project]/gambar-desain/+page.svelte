@@ -43,7 +43,7 @@
       ratio={10 / 14}
       class="absolute cursor-pointer rounded-lg bg-muted transition-all hover:z-10 hover:scale-105"
     >
-      <img id={src} src={src} alt="design" class="object-contain h-full rounded-lg" />
+      <img id={src} {src} alt="design" class="h-full rounded-lg object-contain" />
 
       <button
         class="absolute left-0 top-0 z-50 h-full w-full bg-transparent text-black opacity-0"

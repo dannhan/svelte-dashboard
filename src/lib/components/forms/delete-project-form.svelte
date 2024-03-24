@@ -13,7 +13,8 @@
   export let params: string;
   export let project: Project;
 
-  const deleteProjectForm = getContext<SuperValidated<Infer<typeof deleteProjectSchema>>>('deleteProjectForm');
+  const deleteProjectForm =
+    getContext<SuperValidated<Infer<typeof deleteProjectSchema>>>('deleteProjectForm');
   const form = superForm(deleteProjectForm, { validators: zodClient(deleteProjectSchema) });
   const { form: formData, enhance } = form;
 </script>

@@ -33,7 +33,13 @@ export class ProjectsService {
   public async addProject(name: string, type: string) {
     const projectRef = doc(this.db, 'projects', name);
 
-    await setDoc(projectRef, { type, identity: [], assignments: [], designImages: [], progress: [] })
+    await setDoc(projectRef, {
+      type,
+      identity: [],
+      assignments: [],
+      designImages: [],
+      progress: []
+    })
       .then(() => console.log('PROJECT CREATED...'))
       .catch((error) => console.log(error.message));
   }

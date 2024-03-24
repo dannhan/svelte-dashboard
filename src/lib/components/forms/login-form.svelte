@@ -22,12 +22,7 @@
   <Form.Field {form} name="password">
     <Form.Control let:attrs>
       <Form.Label>Password</Form.Label>
-      <Input
-        {...attrs}
-        bind:value={$formData.password}
-        type="password"
-        class="dark:bg-accent"
-      />
+      <Input {...attrs} bind:value={$formData.password} type="password" class="dark:bg-accent" />
     </Form.Control>
     <Form.Description class="sr-only">Enter the password to login.</Form.Description>
     <Form.FieldErrors />

@@ -8,7 +8,7 @@
 
 <Button
   href="/{$page.params.project}/{href}"
-  variant={$page.url.pathname.split("/").includes(href) ? 'default' : 'ghost'}
+  variant={$page.url.pathname.split('/').includes(href) ? 'default' : 'ghost'}
   class={$$restProps.class}
   on:click={() => (isMobileOpen = false)}
 >

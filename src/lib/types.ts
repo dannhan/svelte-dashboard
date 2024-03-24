@@ -14,7 +14,7 @@ type Identity = {
 };
 
 type Progress = {
-  id: number; 
+  id: number;
   fisik: string;
   biaya: string;
 };

@@ -11,7 +11,7 @@
 
 <Form.Field
   {form}
-  name={name}
+  {name}
   class={cn('flex flex-col capitalize', name === 'spk' && 'uppercase', $$restProps.class)}
 >
   <Form.Control let:attrs>

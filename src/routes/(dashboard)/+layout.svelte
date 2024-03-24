@@ -6,9 +6,9 @@
 
   export let data;
 
-  setContext("projectForm", data.projectForm);
-  setContext("deleteProjectForm", data.deleteProjectForm);
-  setContext("logoutForm", data.logoutForm);
+  setContext('projectForm', data.projectForm);
+  setContext('deleteProjectForm', data.deleteProjectForm);
+  setContext('logoutForm', data.logoutForm);
 
   let isMobileOpen = false;
 </script>

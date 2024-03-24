@@ -9,7 +9,8 @@
   import { FormButton } from '$lib/components/ui/form';
   import { LogOut, Spinner } from '$lib/components/icons';
 
-  const logoutForm = getContext<SuperValidated<Infer<typeof deleteAuthenticationSchema>>>('logoutForm');
+  const logoutForm =
+    getContext<SuperValidated<Infer<typeof deleteAuthenticationSchema>>>('logoutForm');
   const { delayed, enhance } = superForm(logoutForm, {
     validators: zodClient(deleteAuthenticationSchema)
   });
