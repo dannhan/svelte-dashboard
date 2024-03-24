@@ -1,6 +1,17 @@
 <script lang="ts">
+  import { setContext } from 'svelte';
+  import { error } from '@sveltejs/kit';
+  import { page } from '$app/stores';
   import { ModeToggle } from '$lib/components';
-  import TeamForm from '$lib/components/forms/team-form.svelte';
+  import AssignmentForm from '$lib/components/forms/assignment-form.svelte';
+
+  export let data;
+  const params = $page.params.project;
+  const project = data.projects?.find((project) => project.name === params);
+
+  if (!project) throw error(404);
+
+  setContext('postAssignmentForm', data.postAssignmentForm);
 </script>
 
 <div class="mb-4 flex items-end">
@@ -8,4 +19,4 @@
   <ModeToggle />
 </div>
 
-<TeamForm />
+<AssignmentForm id={(project.assignment?.length || 0) + 1} data={project.assignment[data.updateDataId - 1]} />

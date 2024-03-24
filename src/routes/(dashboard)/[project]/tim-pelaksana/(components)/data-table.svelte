@@ -22,15 +22,19 @@
     filter: addTableFilter({
       fn: ({ filterValue, value }) => value.toLowerCase().includes(filterValue.toLowerCase())
     }),
-    sort: addSortBy({ toggleOrder: ['asc', 'desc'] }),
+    sort: addSortBy({
+      toggleOrder: ['asc', 'desc'],
+      initialSortKeys: [{ id: 'id', order: 'asc' }]
+    }),
+
     // todo: set this to localStorage
-    page: addPagination({ initialPageSize: 9 }),
+    page: addPagination({ initialPageSize: 10 }),
     colFilter: addColumnFilters(),
     hide: addHiddenColumns()
   });
 
   const columns = table.createColumns([
-    table.column({ accessor: 'id', header: 'No', id: 'no' }),
+    table.column({ accessor: 'id', header: 'No', id: 'id' }),
     table.column({ accessor: 'pekerjaan', header: 'Pekerjaan' }),
     table.column({ accessor: 'spk', header: 'SPK' }),
     table.column({ accessor: 'pelaksana', header: 'Pelaksana' }),
@@ -43,7 +47,7 @@
     table.column({
       accessor: ({ id }) => id,
       header: '',
-      cell: () => createRender(DataTableActions),
+      cell: ({ value }) => createRender(DataTableActions, { id: value }),
       plugins: {
         sort: {
           disable: true

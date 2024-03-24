@@ -23,7 +23,7 @@ type Project = {
   name: string;
   type: string;
   identity: Identity[];
-  team: Assignment[];
+  assignment: Assignment[];
   designImages: string[];
   progress: Progress[];
 };

@@ -27,6 +27,7 @@
     on:submit|preventDefault={handleSubmit}
     bind:this={form}
     class="h-full rounded-md dark:focus-within:bg-accent"
+    spellcheck="false"
   >
     <input
       type="text"
@@ -41,6 +42,7 @@
     on:submit|preventDefault={handleSubmit}
     bind:this={form}
     class="h-full w-auto rounded-md dark:focus-within:bg-accent"
+    spellcheck="false"
   >
     <input
       id={column.id === 'key' ? row.id : `value-${row.id + 1}`}

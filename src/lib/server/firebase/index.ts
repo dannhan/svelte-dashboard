@@ -20,8 +20,10 @@ import { ProjectsService } from './services/projects';
 import { DesignImagesService } from './services/design-images';
 import { ProjectIdentityService } from './services/project-identity';
 import { ProjectProgressService } from './services/project-progress';
+import { ProjectAssignmentService } from './services/project-assignment';
 
 export const { addProject, getProjects, getFirstProject, deleteProject } = new ProjectsService(app);
 export const { uploadDesignImage } = new DesignImagesService(app);
 export const { addProjectIdentity, deleteProjectIdentity } = new ProjectIdentityService(app);
 export const { addProjectProgress, deleteProjectProgress } = new ProjectProgressService(app);
+export const { addProjectAssignment } = new ProjectAssignmentService(app);

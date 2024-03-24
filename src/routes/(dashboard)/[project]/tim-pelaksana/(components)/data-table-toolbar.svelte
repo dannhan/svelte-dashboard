@@ -62,10 +62,9 @@
 
       <!-- todo: implement add data page -->
       <Button
+        href="tim-pelaksana/data"
         variant="secondary"
         class="w-full items-center focus-visible:ring-2 md:w-auto"
-        type="button"
-        on:click={() => goto('tim-pelaksana/data')}
       >
         <Plus class="-ml-1 mr-1.5 h-4 w-4" />
         Add Data

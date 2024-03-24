@@ -45,6 +45,12 @@ export const postAssignmentSchema = z.object({
   pekerjaan: z.string(),
   spk: z.string(),
   pelaksana: z.string(),
-  gambar: z.string(),
-  status: z.string(),
-})
+  gambar: z
+    .any()
+    .refine(
+      (file) => ACCEPTED_IMAGE_TYPES.includes(file?.type),
+      'Only .jpg, .jpeg, .png, webp and .svg formats are supported.'
+    )
+    .optional(),
+  status: z.string()
+});

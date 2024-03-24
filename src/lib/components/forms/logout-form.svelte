@@ -4,12 +4,12 @@
 
   import { superForm, type Infer, type SuperValidated } from 'sveltekit-superforms';
   import { zodClient } from 'sveltekit-superforms/adapters';
-  import { deleteAuthenticationSchema, type DeleteProjectSchema } from '$lib/schema';
+  import { deleteAuthenticationSchema } from '$lib/schema';
 
   import { FormButton } from '$lib/components/ui/form';
   import { LogOut, Spinner } from '$lib/components/icons';
 
-  const logoutForm = getContext<SuperValidated<Infer<DeleteProjectSchema>>>('logoutForm');
+  const logoutForm = getContext<SuperValidated<Infer<typeof deleteAuthenticationSchema>>>('logoutForm');
   const { delayed, enhance } = superForm(logoutForm, {
     validators: zodClient(deleteAuthenticationSchema)
   });

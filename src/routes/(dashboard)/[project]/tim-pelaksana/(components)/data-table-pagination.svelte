@@ -23,15 +23,15 @@
       <p class="sr-only text-sm font-medium">Rows per page</p>
       <Select.Root
         onSelectedChange={(selected) => pageSize.set(Number(selected?.value))}
-        selected={{ value: '9', label: '9' }}
+        selected={{ value: '10', label: '10' }}
       >
         <Select.Trigger class="w-[80px]">
           <Select.Value placeholder="Select page size" />
         </Select.Trigger>
         <Select.Content>
-          <Select.Item value="3">3</Select.Item>
-          <Select.Item value="6">6</Select.Item>
-          <Select.Item value="9">9</Select.Item>
+          <Select.Item value="10">10</Select.Item>
+          <Select.Item value="25">25</Select.Item>
+          <Select.Item value="50">50</Select.Item>
         </Select.Content>
       </Select.Root>
     </div>
